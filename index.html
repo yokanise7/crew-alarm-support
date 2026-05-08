@@ -19,13 +19,13 @@
       --green-soft: #eaf8ef;
       --purple: #7c3aed;
       --purple-soft: #f2ecff;
+      --pink: #e11d48;
+      --pink-soft: #fff1f3;
       --shadow: 0 18px 45px rgba(25, 40, 72, 0.08);
       --radius: 22px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -38,27 +38,19 @@
       line-height: 1.75;
     }
 
-    a {
-      color: var(--blue);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
+    a { color: var(--blue); text-decoration: none; font-weight: 800; }
+    a:hover { text-decoration: underline; }
 
     .page {
       width: min(1120px, calc(100% - 36px));
       margin: 0 auto;
     }
 
-    header {
-      padding: 72px 0 44px;
-    }
+    header { padding: 72px 0 44px; }
 
     .hero {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 32px;
       align-items: center;
     }
@@ -72,7 +64,7 @@
       background: rgba(255, 255, 255, 0.72);
       border: 1px solid rgba(255, 255, 255, 0.8);
       color: var(--blue);
-      font-weight: 700;
+      font-weight: 900;
       font-size: 14px;
       box-shadow: 0 8px 24px rgba(25, 40, 72, 0.06);
     }
@@ -85,7 +77,7 @@
     }
 
     .lead {
-      max-width: 720px;
+      max-width: 760px;
       font-size: clamp(17px, 2vw, 21px);
       color: var(--muted);
       margin: 0;
@@ -105,7 +97,7 @@
       background: linear-gradient(180deg, #101828, #182033);
       color: white;
       padding: 22px;
-      min-height: 320px;
+      min-height: 340px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -147,14 +139,8 @@
       border: 1px solid rgba(255, 255, 255, 0.14);
     }
 
-    .alarm-row strong {
-      font-size: 17px;
-    }
-
-    .time {
-      font-variant-numeric: tabular-nums;
-      font-weight: 800;
-    }
+    .alarm-row strong { font-size: 17px; }
+    .time { font-variant-numeric: tabular-nums; font-weight: 900; }
 
     nav {
       position: sticky;
@@ -182,18 +168,12 @@
       background: white;
       color: var(--text);
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 800;
       border: 1px solid var(--line);
     }
 
-    main {
-      padding-bottom: 80px;
-    }
-
-    section {
-      scroll-margin-top: 76px;
-      margin: 28px 0;
-    }
+    main { padding-bottom: 80px; }
+    section { scroll-margin-top: 76px; margin: 28px 0; }
 
     .section-title {
       display: flex;
@@ -240,16 +220,8 @@
       box-shadow: var(--shadow);
     }
 
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 20px;
-      line-height: 1.35;
-    }
-
-    .card p,
-    .card li {
-      color: var(--muted);
-    }
+    .card h3 { margin: 0 0 10px; font-size: 20px; line-height: 1.35; }
+    .card p, .card li { color: var(--muted); }
 
     .steps {
       counter-reset: step;
@@ -284,25 +256,13 @@
       font-weight: 900;
     }
 
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 14px;
-    }
-
-    .tag {
-      display: inline-flex;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 13px;
-    }
-
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .tag { display: inline-flex; padding: 6px 10px; border-radius: 999px; font-weight: 900; font-size: 13px; }
     .tag.blue { background: var(--blue-soft); color: var(--blue); }
     .tag.orange { background: var(--orange-soft); color: var(--orange); }
     .tag.green { background: var(--green-soft); color: var(--green); }
     .tag.purple { background: var(--purple-soft); color: var(--purple); }
+    .tag.pink { background: var(--pink-soft); color: var(--pink); }
 
     .code-block {
       background: #0f172a;
@@ -324,10 +284,22 @@
       color: #7c2d12;
     }
 
-    .faq {
+    .mode-card {
       display: grid;
       gap: 12px;
     }
+
+    .mode-row {
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: #f8fafc;
+    }
+
+    .mode-row strong { display: block; color: var(--text); margin-bottom: 4px; }
+    .mode-row span { color: var(--muted); }
+
+    .faq { display: grid; gap: 12px; }
 
     details {
       background: white;
@@ -337,16 +309,8 @@
       box-shadow: 0 10px 26px rgba(25, 40, 72, 0.05);
     }
 
-    summary {
-      cursor: pointer;
-      font-weight: 900;
-      color: var(--text);
-    }
-
-    details p {
-      margin-bottom: 0;
-      color: var(--muted);
-    }
+    summary { cursor: pointer; font-weight: 900; color: var(--text); }
+    details p { margin-bottom: 0; color: var(--muted); }
 
     footer {
       border-top: 1px solid var(--line);
@@ -356,15 +320,8 @@
     }
 
     @media (max-width: 860px) {
-      .hero,
-      .two-col,
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      header {
-        padding-top: 42px;
-      }
+      .hero, .two-col, .grid { grid-template-columns: 1fr; }
+      header { padding-top: 42px; }
     }
   </style>
 </head>
@@ -372,29 +329,20 @@
   <header class="page">
     <div class="hero">
       <div>
-        <div class="badge">🚆 乗務員向けアラーム補助アプリ</div>
+        <div class="badge">🚆 出場アラーム v1.0.1 サポート</div>
         <h1>出場アラーム<br />サポート</h1>
         <p class="lead">
           CSV勤務表から、起床・出場・信号現示アラームをまとめて作成できます。
-          このページでは、初回設定、CSVの作り方、事前通知、Dynamic Island表示について説明します。
+          v1.0.1では、信号現示の通知のみモード、通知文編集、小さい画面向け表示に対応しました。
         </p>
       </div>
       <div class="hero-card">
         <div class="phone-card">
-          <h2>次のアラームを<br />わかりやすく確認</h2>
+          <h2>勤務に合わせて<br />アラームと通知を管理</h2>
           <div class="alarm-preview">
-            <div class="alarm-row">
-              <strong>起床</strong>
-              <span class="time">06:40</span>
-            </div>
-            <div class="alarm-row">
-              <strong>出場</strong>
-              <span class="time">07:20</span>
-            </div>
-            <div class="alarm-row">
-              <strong>信号現示</strong>
-              <span class="time">07:37</span>
-            </div>
+            <div class="alarm-row"><strong>起床</strong><span class="time">06:54</span></div>
+            <div class="alarm-row"><strong>出場</strong><span class="time">07:14</span></div>
+            <div class="alarm-row"><strong>信号現示 通知のみ</strong><span class="time">07:37</span></div>
           </div>
         </div>
       </div>
@@ -404,10 +352,13 @@
   <nav>
     <div class="nav-inner">
       <a href="#about">概要</a>
+      <a href="#new">v1.0.1</a>
       <a href="#start">初回設定</a>
       <a href="#csv">CSV作成</a>
       <a href="#alarm">アラーム登録</a>
       <a href="#notice">事前通知</a>
+      <a href="#signal">信号現示</a>
+      <a href="#small">小さい画面</a>
       <a href="#live">Dynamic Island</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">お問い合わせ</a>
@@ -433,8 +384,28 @@
       </div>
     </section>
 
+    <section id="new">
+      <div class="section-title"><span>2</span><h2>v1.0.1 の主な変更点</h2></div>
+      <div class="grid">
+        <div class="card">
+          <h3>信号現示を3モード化</h3>
+          <p>信号現示を「アラーム」「通知のみ」「使用しない」から選べます。</p>
+          <div class="tag-row"><span class="tag orange">アラーム</span><span class="tag green">通知のみ</span><span class="tag pink">使用しない</span></div>
+        </div>
+        <div class="card">
+          <h3>通知文を編集</h3>
+          <p>起床・出場の事前通知文を、設定画面から自由に編集できます。</p>
+          <div class="tag-row"><span class="tag blue">{title}</span><span class="tag blue">{notifyTime}</span><span class="tag blue">{minutes}</span></div>
+        </div>
+        <div class="card">
+          <h3>小さい画面に対応</h3>
+          <p>小さいiPhoneでは勤務選択をメニュー方式にできます。設定からホイールピッカーにも戻せます。</p>
+        </div>
+      </div>
+    </section>
+
     <section id="start">
-      <div class="section-title"><span>2</span><h2>初回設定</h2></div>
+      <div class="section-title"><span>3</span><h2>初回設定</h2></div>
       <div class="two-col">
         <div class="card">
           <h3>操作手順</h3>
@@ -447,17 +418,13 @@
         <div class="card">
           <h3>許可について</h3>
           <p>アラーム、事前通知、Dynamic Island表示のために、iOSの許可画面が表示される場合があります。</p>
-          <div class="tag-row">
-            <span class="tag blue">通知</span>
-            <span class="tag orange">AlarmKit</span>
-            <span class="tag purple">Live Activity</span>
-          </div>
+          <div class="tag-row"><span class="tag blue">通知</span><span class="tag orange">AlarmKit</span><span class="tag purple">Live Activity</span></div>
         </div>
       </div>
     </section>
 
     <section id="csv">
-      <div class="section-title"><span>3</span><h2>CSVファイルの作り方</h2></div>
+      <div class="section-title"><span>4</span><h2>CSVファイルの作り方</h2></div>
       <div class="card">
         <h3>必要な列名</h3>
         <p>CSVには、以下の列名を含めてください。複数の出場時刻はカンマ区切りで入力します。</p>
@@ -471,32 +438,20 @@ C1,平日明け,"07:13,10:18",06:40,07:37</pre>
         <div class="card">
           <h3>Excelで作成する場合</h3>
           <ol class="steps">
-            <li>1行目に列名を入力します。列名は「勤務名」「カテゴリ」「基準アラーム時刻（カンマ区切り）」「基準起床時間」「信号現示の時間」にします。</li>
-            <li>2行目以降に勤務データを入力します。複数の出場時刻は、1つのセル内に「07:11,10:23,13:28」のようにカンマ区切りで入力します。</li>
-            <li>保存時に「名前を付けて保存」または「エクスポート」から、ファイル形式を「CSV UTF-8（コンマ区切り）」にして保存します。</li>
-            <li>作成したCSVファイルをiCloud Driveやファイルアプリで開ける場所に保存し、アプリの「CSVを読み込む」から選択します。</li>
+            <li>1行目に列名を入力します。</li>
+            <li>2行目以降に勤務データを入力します。複数の出場時刻は、1つのセル内にカンマ区切りで入力します。</li>
+            <li>保存時に「CSV UTF-8（コンマ区切り）」で保存します。</li>
+            <li>作成したCSVをiCloud Driveやファイルアプリで開ける場所に保存します。</li>
           </ol>
         </div>
-
         <div class="card">
           <h3>Numbersで作成する場合</h3>
           <ol class="steps">
-            <li>表の1行目に列名を入力します。列名はアプリ指定のものに合わせてください。</li>
-            <li>2行目以降に勤務データを入力します。複数の出場時刻は、1つのセル内にカンマ区切りで入力します。</li>
-            <li>右上の共有ボタン、または「ファイル」メニューから「書き出す」を選び、「CSV」を選択します。</li>
-            <li>書き出したCSVファイルをファイルアプリに保存し、アプリの「CSVを読み込む」から選択します。</li>
+            <li>表の1行目に列名を入力します。</li>
+            <li>2行目以降に勤務データを入力します。</li>
+            <li>共有ボタン、または「ファイル」メニューから「書き出す」→「CSV」を選びます。</li>
+            <li>書き出したCSVをファイルアプリに保存します。</li>
           </ol>
-        </div>
-      </div>
-
-      <div class="two-col" style="margin-top:18px;">
-        <div class="card">
-          <h3>基準時刻とは</h3>
-          <p>勤務表上の元になる時刻です。出場時刻や起床時刻、信号現示時刻を指します。</p>
-        </div>
-        <div class="card">
-          <h3>アラーム時刻とは</h3>
-          <p>基準時刻から、設定した「○分前」を引いた実際に鳴る時刻です。</p>
         </div>
       </div>
 
@@ -506,7 +461,7 @@ C1,平日明け,"07:13,10:18",06:40,07:37</pre>
     </section>
 
     <section id="alarm">
-      <div class="section-title"><span>4</span><h2>アラームを登録する</h2></div>
+      <div class="section-title"><span>5</span><h2>アラームを登録する</h2></div>
       <div class="two-col">
         <div class="card">
           <h3>登録手順</h3>
@@ -518,55 +473,74 @@ C1,平日明け,"07:13,10:18",06:40,07:37</pre>
           </ol>
         </div>
         <div class="card">
-          <h3>削除と完了</h3>
-          <p>登録済みアラームは個別削除・全削除できます。完了したアラームはチェック付きで表示され、再び鳴らないように扱われます。</p>
+          <h3>基準時刻とアラーム時刻</h3>
+          <p>基準時刻は勤務表上の元時刻です。アラーム時刻は、設定した「○分前」を引いた実際に鳴る時刻です。</p>
+          <pre class="code-block">例：
+基準時刻 07:30
+出場アラーム 5分前
+実際に鳴る時刻 07:25</pre>
         </div>
       </div>
     </section>
 
     <section id="notice">
-      <div class="section-title"><span>5</span><h2>事前通知</h2></div>
-      <div class="card">
-        <h3>アラーム時刻のさらに前に通知</h3>
-        <p>事前通知は、実際に鳴るアラーム時刻のさらに○分前に通知する機能です。起床・出場・信号ごとにオン／オフと通知タイミングを設定できます。</p>
-        <pre class="code-block">例：
+      <div class="section-title"><span>6</span><h2>事前通知</h2></div>
+      <div class="two-col">
+        <div class="card">
+          <h3>アラーム時刻のさらに前に通知</h3>
+          <p>事前通知は、実際に鳴るアラーム時刻のさらに○分前に通知する機能です。起床・出場・信号現示ごとにオン／オフと通知タイミングを設定できます。</p>
+          <pre class="code-block">例：
 基準時刻：07:30
-出場アラーム：10分前 → 07:20に鳴る
-事前通知：5分前 → 07:15に通知</pre>
+出場アラーム：5分前 → 07:25に鳴る
+事前通知：10分前 → 07:15に通知</pre>
+        </div>
+        <div class="card">
+          <h3>通知文の編集</h3>
+          <p>起床・出場の事前通知文は設定画面で編集できます。以下の文字を入れると、通知時に自動で置き換わります。</p>
+          <pre class="code-block">{title}      アラーム名
+{notifyTime} アラーム時刻
+{baseTime}   基準時刻
+{minutes}    事前通知の分数</pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="signal">
+      <div class="section-title"><span>7</span><h2>信号現示の設定</h2></div>
+      <div class="card mode-card">
+        <div class="mode-row"><strong>アラーム</strong><span>信号現示をAlarmKitのアラームとして登録します。停止後は次アラーム進行の対象になります。</span></div>
+        <div class="mode-row"><strong>通知のみ</strong><span>信号現示をアラームとして鳴らさず、iPhoneやApple Watchへの通知でお知らせします。登録済みアラーム一覧や次アラーム表示には入りません。</span></div>
+        <div class="mode-row"><strong>使用しない</strong><span>信号現示のアラームも通知も登録しません。</span></div>
+      </div>
+    </section>
+
+    <section id="small">
+      <div class="section-title"><span>8</span><h2>小さい画面のiPhone向け表示</h2></div>
+      <div class="card">
+        <p>小さい画面のiPhoneでは、勤務選択時にスクロール操作とホイールピッカー操作が重なりやすい場合があります。v1.0.1では、該当端末ではメニュー方式を標準表示にし、設定画面からホイールピッカー表示に切り替えられるようにしました。</p>
       </div>
     </section>
 
     <section id="live">
-      <div class="section-title"><span>6</span><h2>Dynamic Island / Live Activity</h2></div>
+      <div class="section-title"><span>9</span><h2>Dynamic Island / Live Activity</h2></div>
       <div class="note">
         Live ActivityやDynamic Islandは補助表示です。iOSの集中モード、睡眠モード、低電力状態、長時間経過などにより表示されなくなる場合があります。アラーム本体と事前通知は、Live Activityの表示状態に関係なく動作します。
       </div>
     </section>
 
     <section id="faq">
-      <div class="section-title"><span>7</span><h2>よくある質問</h2></div>
+      <div class="section-title"><span>10</span><h2>よくある質問</h2></div>
       <div class="faq">
-        <details>
-          <summary>CSVを読み込めません。</summary>
-          <p>ヘッダー名が指定フォーマットと一致しているか確認してください。特に「基準アラーム時刻（カンマ区切り）」の表記に注意してください。</p>
-        </details>
-        <details>
-          <summary>信号現示アラームを使わない場合は？</summary>
-          <p>設定画面で信号現示アラームをオフにできます。</p>
-        </details>
-        <details>
-          <summary>Dynamic Islandが消えました。</summary>
-          <p>iOSの仕様により表示されなくなる場合があります。アラーム本体と事前通知は登録時刻に動作します。</p>
-        </details>
-        <details>
-          <summary>通知が来ません。</summary>
-          <p>iPhoneの設定アプリで通知許可がオンになっているか確認してください。また、アプリ内の事前通知設定がオンになっているか確認してください。</p>
-        </details>
+        <details><summary>CSVを読み込めません。</summary><p>ヘッダー名が指定フォーマットと一致しているか確認してください。特に「基準アラーム時刻（カンマ区切り）」の表記に注意してください。</p></details>
+        <details><summary>信号現示をアラームではなく通知だけにできますか？</summary><p>できます。設定画面の「信号現示」で「通知のみ」を選ぶと、iPhoneやApple Watchに通知だけ届きます。</p></details>
+        <details><summary>通知のみの信号現示が登録済みアラーム一覧に出ません。</summary><p>通知のみの場合は、次アラーム進行に影響しないよう、登録済みアラーム一覧やLive Activityには表示しない仕様です。</p></details>
+        <details><summary>Dynamic Islandが消えました。</summary><p>iOSの仕様により表示されなくなる場合があります。アラーム本体と事前通知は登録時刻に動作します。</p></details>
+        <details><summary>通知が来ません。</summary><p>iPhoneの設定アプリで通知許可がオンになっているか確認してください。また、アプリ内の事前通知設定がオンになっているか確認してください。</p></details>
       </div>
     </section>
 
     <section id="contact">
-      <div class="section-title"><span>8</span><h2>お問い合わせ</h2></div>
+      <div class="section-title"><span>11</span><h2>お問い合わせ</h2></div>
       <div class="card">
         <p>不具合報告、ご質問、CSVファイルの作成方法についてのお問い合わせは、以下のメールアドレスまでご連絡ください。</p>
         <p><strong><a href="mailto:crew.alarm.app2026@gmail.com">crew.alarm.app2026@gmail.com</a></strong></p>

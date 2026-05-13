@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-current-lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="出場アラーム / CrewAlarm v1.0.2 (7) Support Page" />
   <title>出場アラーム サポート</title>
   <style>
     :root {
       --bg: #f4f7fb;
-      --card: #ffffff;
+      --card: rgba(255, 255, 255, 0.84);
+      --card-solid: #ffffff;
       --text: #172033;
       --muted: #667085;
-      --line: #e6eaf2;
+      --line: rgba(230, 234, 242, 0.92);
       --blue: #2563eb;
       --blue-soft: #eaf1ff;
       --orange: #f97316;
@@ -21,24 +23,67 @@
       --purple-soft: #f2ecff;
       --pink: #e11d48;
       --pink-soft: #fff1f3;
-      --shadow: 0 18px 45px rgba(25, 40, 72, 0.08);
-      --radius: 22px;
+      --shadow: 0 22px 55px rgba(25, 40, 72, 0.11);
+      --shadow-soft: 0 10px 28px rgba(25, 40, 72, 0.07);
+      --radius: 24px;
+      --glass: rgba(255, 255, 255, 0.74);
     }
 
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(37, 99, 235, 0.16), transparent 34%),
-        radial-gradient(circle at top right, rgba(249, 115, 22, 0.14), transparent 30%),
-        var(--bg);
+      background: var(--bg);
       color: var(--text);
       line-height: 1.75;
+      overflow-x: hidden;
     }
 
-    a { color: var(--blue); text-decoration: none; font-weight: 800; }
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      width: 440px;
+      height: 440px;
+      border-radius: 999px;
+      filter: blur(14px);
+      opacity: 0.34;
+      pointer-events: none;
+      z-index: -2;
+      animation: floatBlob 14s ease-in-out infinite alternate;
+    }
+
+    body::before {
+      top: -130px;
+      left: -120px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.48), transparent 68%);
+    }
+
+    body::after {
+      top: 60px;
+      right: -140px;
+      background: radial-gradient(circle, rgba(249, 115, 22, 0.35), transparent 70%);
+      animation-delay: -5s;
+    }
+
+    .ambient {
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      background:
+        radial-gradient(circle at 22% 28%, rgba(124, 58, 237, 0.12), transparent 30%),
+        radial-gradient(circle at 80% 14%, rgba(22, 163, 74, 0.10), transparent 28%),
+        linear-gradient(180deg, #f8fbff 0%, #eef4fb 100%);
+    }
+
+    @keyframes floatBlob {
+      from { transform: translate3d(0, 0, 0) scale(1); }
+      to { transform: translate3d(36px, 44px, 0) scale(1.08); }
+    }
+
+    a { color: var(--blue); text-decoration: none; font-weight: 850; }
     a:hover { text-decoration: underline; }
 
     .page {
@@ -46,11 +91,67 @@
       margin: 0 auto;
     }
 
-    header { padding: 72px 0 44px; }
+    .topbar {
+      width: min(1120px, calc(100% - 36px));
+      margin: 18px auto 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .version-pill {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: var(--blue);
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.82);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(14px);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .language-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.74);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(14px);
+      z-index: 20;
+    }
+
+    .language-switch button {
+      border: 0;
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-weight: 900;
+      font-size: 13px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: transform 0.22s ease, background 0.22s ease, color 0.22s ease;
+    }
+
+    .language-switch button:hover { transform: translateY(-1px); }
+    .language-switch button.active {
+      background: var(--blue);
+      color: white;
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
+    }
+
+    header { padding: 56px 0 44px; }
 
     .hero {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1.12fr 0.88fr;
       gap: 32px;
       align-items: center;
     }
@@ -61,19 +162,27 @@
       gap: 8px;
       padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.72);
-      border: 1px solid rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid rgba(255, 255, 255, 0.86);
       color: var(--blue);
       font-weight: 900;
       font-size: 14px;
-      box-shadow: 0 8px 24px rgba(25, 40, 72, 0.06);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(12px);
     }
 
     h1 {
       margin: 18px 0 14px;
       font-size: clamp(38px, 6vw, 72px);
-      line-height: 1.05;
-      letter-spacing: -0.05em;
+      line-height: 1.04;
+      letter-spacing: -0.06em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--blue), var(--purple), var(--orange));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .lead {
@@ -83,37 +192,82 @@
       margin: 0;
     }
 
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 15px;
+      border-radius: 999px;
+      color: white;
+      background: var(--blue);
+      box-shadow: 0 12px 26px rgba(37, 99, 235, 0.24);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .cta-link:hover {
+      text-decoration: none;
+      transform: translateY(-2px);
+      box-shadow: 0 18px 36px rgba(37, 99, 235, 0.30);
+    }
+
+    .ghost-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 15px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(255,255,255,0.86);
+      box-shadow: var(--shadow-soft);
+      color: var(--text);
+    }
+
     .hero-card {
-      background: rgba(255, 255, 255, 0.72);
-      border: 1px solid rgba(255, 255, 255, 0.78);
-      border-radius: 32px;
+      background: var(--glass);
+      border: 1px solid rgba(255, 255, 255, 0.82);
+      border-radius: 34px;
       padding: 24px;
       box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(16px);
+      animation: riseIn 0.85s ease both;
     }
 
     .phone-card {
-      border-radius: 26px;
+      border-radius: 28px;
       background: linear-gradient(180deg, #101828, #182033);
       color: white;
       padding: 22px;
-      min-height: 340px;
+      min-height: 360px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       overflow: hidden;
       position: relative;
+      box-shadow: 0 20px 48px rgba(16, 24, 40, 0.22);
     }
 
     .phone-card::before {
       content: "";
       position: absolute;
       inset: -80px -60px auto auto;
-      width: 220px;
-      height: 220px;
+      width: 240px;
+      height: 240px;
       border-radius: 50%;
-      background: rgba(37, 99, 235, 0.38);
+      background: rgba(37, 99, 235, 0.42);
       filter: blur(12px);
+      animation: pulseGlow 4.2s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      from { opacity: 0.46; transform: scale(0.96); }
+      to { opacity: 0.88; transform: scale(1.08); }
     }
 
     .phone-card h2 {
@@ -133,23 +287,34 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 14px;
       padding: 12px 14px;
       border-radius: 16px;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.10);
       border: 1px solid rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(10px);
+      animation: riseIn 0.65s ease both;
     }
 
+    .alarm-row:nth-child(2) { animation-delay: 0.08s; }
+    .alarm-row:nth-child(3) { animation-delay: 0.16s; }
     .alarm-row strong { font-size: 17px; }
-    .time { font-variant-numeric: tabular-nums; font-weight: 900; }
+    .time { font-variant-numeric: tabular-nums; font-weight: 950; }
+
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     nav {
       position: sticky;
       top: 0;
       z-index: 50;
       margin-bottom: 28px;
-      background: rgba(244, 247, 251, 0.82);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(230, 234, 242, 0.8);
+      background: rgba(244, 247, 251, 0.78);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(230, 234, 242, 0.56);
+      border-bottom: 1px solid rgba(230, 234, 242, 0.86);
     }
 
     .nav-inner {
@@ -159,21 +324,32 @@
       gap: 10px;
       overflow-x: auto;
       padding: 12px 0;
+      scrollbar-width: none;
     }
+
+    .nav-inner::-webkit-scrollbar { display: none; }
 
     .nav-inner a {
       white-space: nowrap;
       padding: 8px 12px;
       border-radius: 999px;
-      background: white;
+      background: rgba(255,255,255,0.88);
       color: var(--text);
       font-size: 14px;
-      font-weight: 800;
+      font-weight: 850;
       border: 1px solid var(--line);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, color 0.22s ease;
+    }
+
+    .nav-inner a:hover {
+      text-decoration: none;
+      transform: translateY(-2px);
+      color: var(--blue);
+      box-shadow: var(--shadow-soft);
     }
 
     main { padding-bottom: 80px; }
-    section { scroll-margin-top: 76px; margin: 28px 0; }
+    section { scroll-margin-top: 78px; margin: 28px 0; }
 
     .section-title {
       display: flex;
@@ -187,10 +363,11 @@
       place-items: center;
       width: 38px;
       height: 38px;
-      border-radius: 12px;
+      border-radius: 13px;
       background: var(--blue-soft);
       color: var(--blue);
-      font-weight: 900;
+      font-weight: 950;
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.08);
     }
 
     h2 {
@@ -200,28 +377,32 @@
       letter-spacing: -0.03em;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 
     .card {
       background: var(--card);
-      border: 1px solid var(--line);
+      border: 1px solid rgba(255,255,255,0.80);
       border-radius: var(--radius);
       padding: 22px;
       box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      transform: translateY(0);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 26px 65px rgba(25, 40, 72, 0.14);
     }
 
     .card h3 { margin: 0 0 10px; font-size: 20px; line-height: 1.35; }
     .card p, .card li { color: var(--muted); }
+
+    .beginner {
+      border-left: 5px solid var(--green);
+      background: linear-gradient(135deg, var(--green-soft), rgba(255,255,255,0.84));
+    }
 
     .steps {
       counter-reset: step;
@@ -240,8 +421,9 @@
       align-items: start;
       padding: 14px;
       border-radius: 16px;
-      background: #f8fafc;
+      background: rgba(248, 250, 252, 0.92);
       color: var(--text);
+      border: 1px solid rgba(230, 234, 242, 0.74);
     }
 
     .steps li::before {
@@ -253,11 +435,11 @@
       border-radius: 999px;
       background: var(--blue);
       color: white;
-      font-weight: 900;
+      font-weight: 950;
     }
 
     .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-    .tag { display: inline-flex; padding: 6px 10px; border-radius: 999px; font-weight: 900; font-size: 13px; }
+    .tag { display: inline-flex; padding: 6px 10px; border-radius: 999px; font-weight: 950; font-size: 13px; }
     .tag.blue { background: var(--blue-soft); color: var(--blue); }
     .tag.orange { background: var(--orange-soft); color: var(--orange); }
     .tag.green { background: var(--green-soft); color: var(--green); }
@@ -304,28 +486,14 @@
     .sample-table th {
       background: linear-gradient(180deg, #f8fafc, #eef4ff);
       color: var(--text);
-      font-weight: 900;
+      font-weight: 950;
     }
 
-    .sample-table th small {
-      color: var(--muted);
-      font-weight: 700;
-    }
+    .sample-table th small { color: var(--muted); font-weight: 750; }
+    .sample-table tbody tr:last-child td { border-bottom: none; }
+    .sample-table td:first-child { font-weight: 950; color: var(--blue); }
 
-    .sample-table tbody tr:last-child td {
-      border-bottom: none;
-    }
-
-    .sample-table td:first-child {
-      font-weight: 900;
-      color: var(--blue);
-    }
-
-    .table-caption {
-      margin: 10px 0 0;
-      font-size: 14px;
-      color: var(--muted);
-    }
+    .table-caption { margin: 10px 0 0; font-size: 14px; color: var(--muted); }
 
     .note {
       border-left: 5px solid var(--orange);
@@ -335,32 +503,29 @@
       color: #7c2d12;
     }
 
-    .mode-card {
-      display: grid;
-      gap: 12px;
-    }
-
+    .mode-card { display: grid; gap: 12px; }
     .mode-row {
       padding: 14px;
       border-radius: 16px;
       border: 1px solid var(--line);
-      background: #f8fafc;
+      background: rgba(248, 250, 252, 0.92);
     }
-
     .mode-row strong { display: block; color: var(--text); margin-bottom: 4px; }
     .mode-row span { color: var(--muted); }
 
     .faq { display: grid; gap: 12px; }
 
     details {
-      background: white;
+      background: rgba(255,255,255,0.86);
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 16px 18px;
       box-shadow: 0 10px 26px rgba(25, 40, 72, 0.05);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
     }
 
-    summary { cursor: pointer; font-weight: 900; color: var(--text); }
+    details:hover { transform: translateY(-2px); box-shadow: var(--shadow-soft); }
+    summary { cursor: pointer; font-weight: 950; color: var(--text); }
     details p { margin-bottom: 0; color: var(--muted); }
 
     footer {
@@ -370,30 +535,80 @@
       text-align: center;
     }
 
+    [data-lang] { display: none; }
+    html[data-current-lang="ja"] [data-lang="ja"] { display: revert; }
+    html[data-current-lang="en"] [data-lang="en"] { display: revert; }
+
     @media (max-width: 860px) {
       .hero, .two-col, .grid { grid-template-columns: 1fr; }
       header { padding-top: 42px; }
+      .topbar { align-items: stretch; flex-direction: column; }
+      .language-switch { justify-content: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="ambient" aria-hidden="true"></div>
+
+  <div class="topbar">
+    <div class="version-pill" data-lang="ja">🚆 出場アラーム v1.0.2（7）サポート</div>
+    <div class="version-pill" data-lang="en">🚆 CrewAlarm v1.0.2 (7) Support</div>
+
+    <div class="language-switch" aria-label="Language switch">
+      <button type="button" id="lang-ja" class="active" onclick="setLanguage('ja')">日本語</button>
+      <button type="button" id="lang-en" onclick="setLanguage('en')">English</button>
+    </div>
+  </div>
+
   <header class="page">
     <div class="hero">
-      <div>
-        <div class="badge">🚆 出場アラーム v1.0.1 サポート</div>
-        <h1>出場アラーム<br />サポート</h1>
+      <div data-lang="ja">
+        <div class="badge">はじめてでも安心</div>
+        <h1><span class="gradient-text">出場アラーム</span><br />サポート</h1>
         <p class="lead">
-          CSV勤務表から、起床・出場・信号現示アラームをまとめて作成できます。
-          v1.0.1では、信号現示の通知のみモード、通知文編集、小さい画面向け表示に対応しました。
+          出場アラームは、勤務表CSVから起床・出場・信号現示のアラームをまとめて作成するアプリです。
+          このページでは、CSVの作り方からアラーム登録までを初心者にも分かりやすく説明します。
         </p>
+        <div class="hero-actions">
+          <a class="cta-link" href="#start">まず初回設定を見る →</a>
+          <a class="ghost-link" href="#csv">CSVの作り方を見る</a>
+        </div>
       </div>
+
+      <div data-lang="en">
+        <div class="badge">Beginner-friendly guide</div>
+        <h1><span class="gradient-text">CrewAlarm</span><br />Support</h1>
+        <p class="lead">
+          CrewAlarm creates wake-up, report, and check notification alarms from a duty roster CSV file.
+          This page explains the setup process, CSV preparation, and alarm registration in an easy-to-follow way.
+        </p>
+        <div class="hero-actions">
+          <a class="cta-link" href="#start">Start with initial setup →</a>
+          <a class="ghost-link" href="#csv">Learn how to make a CSV</a>
+        </div>
+      </div>
+
       <div class="hero-card">
         <div class="phone-card">
-          <h2>勤務に合わせて<br />アラームと通知を管理</h2>
-          <div class="alarm-preview">
+          <h2 data-lang="ja">勤務に合わせて<br />アラームと通知を管理</h2>
+          <h2 data-lang="en">Manage alarms and notifications<br />for each duty</h2>
+          <div class="alarm-preview" data-lang="ja">
             <div class="alarm-row"><strong>起床</strong><span class="time">06:54</span></div>
             <div class="alarm-row"><strong>出場</strong><span class="time">07:14</span></div>
-            <div class="alarm-row"><strong>信号現示 通知のみ</strong><span class="time">07:37</span></div>
+            <div class="alarm-row"><strong>確認通知</strong><span class="time">07:37</span></div>
+          </div>
+          <div class="alarm-preview" data-lang="en">
+            <div class="alarm-row"><strong>Wake-up</strong><span class="time">06:54</span></div>
+            <div class="alarm-row"><strong>Report</strong><span class="time">07:14</span></div>
+            <div class="alarm-row"><strong>Check notification</strong><span class="time">07:37</span></div>
           </div>
         </div>
       </div>
@@ -401,9 +616,9 @@
   </header>
 
   <nav>
-    <div class="nav-inner">
+    <div class="nav-inner" data-lang="ja">
       <a href="#about">概要</a>
-      <a href="#new">v1.0.1</a>
+      <a href="#new">v1.0.2</a>
       <a href="#start">初回設定</a>
       <a href="#csv">CSV作成</a>
       <a href="#alarm">アラーム登録</a>
@@ -414,15 +629,30 @@
       <a href="#faq">FAQ</a>
       <a href="#contact">お問い合わせ</a>
     </div>
+    <div class="nav-inner" data-lang="en">
+      <a href="#about">Overview</a>
+      <a href="#new">v1.0.2</a>
+      <a href="#start">Setup</a>
+      <a href="#csv">CSV</a>
+      <a href="#alarm">Alarms</a>
+      <a href="#notice">Pre-alerts</a>
+      <a href="#signal">Check mode</a>
+      <a href="#small">Small screens</a>
+      <a href="#live">Dynamic Island</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
   </nav>
 
   <main class="page">
     <section id="about">
-      <div class="section-title"><span>1</span><h2>出場アラームとは</h2></div>
-      <div class="grid">
-        <div class="card">
+      <div class="section-title" data-lang="ja"><span>1</span><h2>出場アラームとは</h2></div>
+      <div class="section-title" data-lang="en"><span>1</span><h2>What is CrewAlarm?</h2></div>
+
+      <div class="grid" data-lang="ja">
+        <div class="card beginner">
           <h3>CSVから一括作成</h3>
-          <p>勤務表CSVを読み込むことで、勤務に必要なアラームをまとめて登録できます。</p>
+          <p>勤務表CSVを読み込むだけで、その勤務に必要なアラーム候補を自動で作成します。</p>
         </div>
         <div class="card">
           <h3>泊まり＋明けに対応</h3>
@@ -433,37 +663,77 @@
           <p>CSVデータやアラーム情報は端末内で処理されます。ログインや外部サーバー通信はありません。</p>
         </div>
       </div>
+
+      <div class="grid" data-lang="en">
+        <div class="card beginner">
+          <h3>Create alarms from CSV</h3>
+          <p>Import a duty roster CSV file, and the app automatically prepares the alarm candidates needed for that duty.</p>
+        </div>
+        <div class="card">
+          <h3>Supports stay and after-duty patterns</h3>
+          <p>The app supports day duties as well as stay-and-after-duty combinations.</p>
+        </div>
+        <div class="card">
+          <h3>Processed on your device</h3>
+          <p>CSV data and alarm information are processed on your device. No login or external server communication is required.</p>
+        </div>
+      </div>
     </section>
 
     <section id="new">
-      <div class="section-title"><span>2</span><h2>v1.0.1 の主な変更点</h2></div>
-      <div class="grid">
+      <div class="section-title" data-lang="ja"><span>2</span><h2>v1.0.2（7）の主な内容</h2></div>
+      <div class="section-title" data-lang="en"><span>2</span><h2>Main points in v1.0.2 (7)</h2></div>
+
+      <div class="grid" data-lang="ja">
         <div class="card">
           <h3>信号現示を3モード化</h3>
           <p>信号現示を「アラーム」「通知のみ」「使用しない」から選べます。</p>
           <div class="tag-row"><span class="tag orange">アラーム</span><span class="tag green">通知のみ</span><span class="tag pink">使用しない</span></div>
         </div>
         <div class="card">
-          <h3>通知文を編集</h3>
-          <p>起床・出場の事前通知文を、設定画面から自由に編集できます。</p>
-          <div class="tag-row"><span class="tag blue">{title}</span><span class="tag blue">{notifyTime}</span><span class="tag blue">{minutes}</span></div>
+          <h3>確認通知一覧に対応</h3>
+          <p>通知のみで登録した確認通知を一覧で確認できるようにしました。</p>
+          <div class="tag-row"><span class="tag green">確認通知</span><span class="tag blue">一覧表示</span></div>
         </div>
         <div class="card">
-          <h3>小さい画面に対応</h3>
-          <p>小さいiPhoneでは勤務選択をメニュー方式にできます。設定からホイールピッカーにも戻せます。</p>
+          <h3>平日/休日ダイヤ表示</h3>
+          <p>登録済みアラームや確認通知で、平日ダイヤ・休日ダイヤを分かりやすく表示します。</p>
+          <div class="tag-row"><span class="tag blue">平日ダイヤ</span><span class="tag pink">休日ダイヤ</span></div>
+        </div>
+      </div>
+
+      <div class="grid" data-lang="en">
+        <div class="card">
+          <h3>Three check notification modes</h3>
+          <p>Choose how check notifications are handled: Alarm, Notification only, or Off.</p>
+          <div class="tag-row"><span class="tag orange">Alarm</span><span class="tag green">Notification only</span><span class="tag pink">Off</span></div>
+        </div>
+        <div class="card">
+          <h3>Check notification list</h3>
+          <p>Check notifications registered as notification-only items can now be reviewed in a dedicated list.</p>
+          <div class="tag-row"><span class="tag green">Check notifications</span><span class="tag blue">List view</span></div>
+        </div>
+        <div class="card">
+          <h3>Weekday / holiday timetable display</h3>
+          <p>Registered alarms and check notifications clearly show whether they belong to a weekday or holiday timetable.</p>
+          <div class="tag-row"><span class="tag blue">Weekday</span><span class="tag pink">Holiday</span></div>
         </div>
       </div>
     </section>
 
     <section id="start">
-      <div class="section-title"><span>3</span><h2>初回設定</h2></div>
-      <div class="two-col">
-        <div class="card">
-          <h3>操作手順</h3>
+      <div class="section-title" data-lang="ja"><span>3</span><h2>初回設定</h2></div>
+      <div class="section-title" data-lang="en"><span>3</span><h2>Initial setup</h2></div>
+
+      <div class="two-col" data-lang="ja">
+        <div class="card beginner">
+          <h3>まずはこの順番で進めてください</h3>
           <ol class="steps">
             <li>アプリを起動し、通知やLive Activityの許可を確認します。</li>
             <li>「CSVを読み込む」から勤務表CSVを選択します。</li>
-            <li>勤務セットと仕業を選び、アラームを登録します。</li>
+            <li>勤務セットと仕業を選びます。</li>
+            <li>「この勤務で全アラーム登録」をタップします。</li>
+            <li>ホーム上部の「次のアラーム」カードで登録内容を確認します。</li>
           </ol>
         </div>
         <div class="card">
@@ -472,18 +742,37 @@
           <div class="tag-row"><span class="tag blue">通知</span><span class="tag orange">AlarmKit</span><span class="tag purple">Live Activity</span></div>
         </div>
       </div>
+
+      <div class="two-col" data-lang="en">
+        <div class="card beginner">
+          <h3>Follow these steps first</h3>
+          <ol class="steps">
+            <li>Open the app and allow notifications or Live Activities if prompted.</li>
+            <li>Select your duty roster CSV from “Import CSV”.</li>
+            <li>Select the duty set and duty code.</li>
+            <li>Tap “Register all alarms for this duty”.</li>
+            <li>Check the “Next Alarm” card at the top of the home screen.</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h3>Permissions</h3>
+          <p>iOS may ask for permission to use alarms, pre-alert notifications, and Live Activity displays.</p>
+          <div class="tag-row"><span class="tag blue">Notifications</span><span class="tag orange">AlarmKit</span><span class="tag purple">Live Activity</span></div>
+        </div>
+      </div>
     </section>
 
     <section id="csv">
-      <div class="section-title"><span>4</span><h2>CSVファイルの作り方</h2></div>
-      <div class="card">
+      <div class="section-title" data-lang="ja"><span>4</span><h2>CSVファイルの作り方</h2></div>
+      <div class="section-title" data-lang="en"><span>4</span><h2>How to prepare a CSV file</h2></div>
+
+      <div class="card" data-lang="ja">
         <h3>必要な列名</h3>
-        <p>CSVには、以下の列名を含めてください。複数の出場時刻はカンマ区切りで入力します。</p>
+        <p>CSVには、以下の列名を含めてください。複数の出場時刻は、1つのセルの中でカンマ区切りにします。</p>
         <pre class="code-block">勤務名,カテゴリ,基準アラーム時刻（カンマ区切り）,基準起床時間,信号現示の時間
 A1,平日日勤,"07:11,10:23,13:28",06:40,07:38
 B1,平日泊まり,"16:54,19:34,22:45",15:30,
 C1,平日明け,"07:13,10:18",06:40,07:37</pre>
-
         <div class="sample-table-wrap" aria-label="CSV入力例">
           <table class="sample-table">
             <thead>
@@ -496,41 +785,51 @@ C1,平日明け,"07:13,10:18",06:40,07:37</pre>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>A1</td>
-                <td>平日日勤</td>
-                <td>07:11,10:23,13:28</td>
-                <td>06:40</td>
-                <td>07:38</td>
-              </tr>
-              <tr>
-                <td>B1</td>
-                <td>平日泊まり</td>
-                <td>16:54,19:34,22:45</td>
-                <td>15:30</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>C1</td>
-                <td>平日明け</td>
-                <td>07:13,10:18</td>
-                <td>06:40</td>
-                <td>07:37</td>
-              </tr>
+              <tr><td>A1</td><td>平日日勤</td><td>07:11,10:23,13:28</td><td>06:40</td><td>07:38</td></tr>
+              <tr><td>B1</td><td>平日泊まり</td><td>16:54,19:34,22:45</td><td>15:30</td><td></td></tr>
+              <tr><td>C1</td><td>平日明け</td><td>07:13,10:18</td><td>06:40</td><td>07:37</td></tr>
             </tbody>
           </table>
         </div>
         <p class="table-caption">NumbersやExcelでは、この表のように1行目へ列名を入れ、2行目以降に勤務データを入力します。</p>
       </div>
 
-      <div class="two-col" style="margin-top:18px;">
+      <div class="card" data-lang="en">
+        <h3>Required column names</h3>
+        <p>The CSV file must include the following columns. If there are multiple report times, put them in one cell separated by commas.</p>
+        <pre class="code-block">Duty Name,Category,Base Alarm Times,Wake-up Time,Check Notification Time
+A1,Weekday Day,"07:11,10:23,13:28",06:40,07:38
+B1,Weekday Stay,"16:54,19:34,22:45",15:30,
+C1,Weekday After,"07:13,10:18",06:40,07:37</pre>
+        <div class="sample-table-wrap" aria-label="CSV example">
+          <table class="sample-table">
+            <thead>
+              <tr>
+                <th>Duty Name</th>
+                <th>Category</th>
+                <th>Base Alarm Times<br><small>comma-separated</small></th>
+                <th>Wake-up Time</th>
+                <th>Check Notification Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>A1</td><td>Weekday Day</td><td>07:11,10:23,13:28</td><td>06:40</td><td>07:38</td></tr>
+              <tr><td>B1</td><td>Weekday Stay</td><td>16:54,19:34,22:45</td><td>15:30</td><td></td></tr>
+              <tr><td>C1</td><td>Weekday After</td><td>07:13,10:18</td><td>06:40</td><td>07:37</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-caption">In Numbers or Excel, put the column names in the first row and enter duty data from the second row onward.</p>
+      </div>
+
+      <div class="two-col" style="margin-top:18px;" data-lang="ja">
         <div class="card">
           <h3>Excelで作成する場合</h3>
           <ol class="steps">
             <li>1行目に列名を入力します。</li>
-            <li>2行目以降に勤務データを入力します。複数の出場時刻は、1つのセル内にカンマ区切りで入力します。</li>
+            <li>2行目以降に勤務データを入力します。</li>
+            <li>複数の出場時刻は、1つのセル内にカンマ区切りで入力します。</li>
             <li>保存時に「CSV UTF-8（コンマ区切り）」で保存します。</li>
-            <li>作成したCSVをiCloud Driveやファイルアプリで開ける場所に保存します。</li>
           </ol>
         </div>
         <div class="card">
@@ -538,30 +837,55 @@ C1,平日明け,"07:13,10:18",06:40,07:37</pre>
           <ol class="steps">
             <li>表の1行目に列名を入力します。</li>
             <li>2行目以降に勤務データを入力します。</li>
-            <li>共有ボタン、または「ファイル」メニューから「書き出す」→「CSV」を選びます。</li>
+            <li>「書き出す」から「CSV」を選びます。</li>
             <li>書き出したCSVをファイルアプリに保存します。</li>
           </ol>
         </div>
       </div>
 
-      <div class="note" style="margin-top:18px;">
+      <div class="two-col" style="margin-top:18px;" data-lang="en">
+        <div class="card">
+          <h3>Creating a CSV with Excel</h3>
+          <ol class="steps">
+            <li>Enter the column names in the first row.</li>
+            <li>Enter duty data from the second row onward.</li>
+            <li>Put multiple report times in one cell separated by commas.</li>
+            <li>Save the file as “CSV UTF-8 (Comma delimited)”.</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h3>Creating a CSV with Numbers</h3>
+          <ol class="steps">
+            <li>Enter the column names in the first row of the table.</li>
+            <li>Enter duty data from the second row onward.</li>
+            <li>Choose “Export” and select “CSV”.</li>
+            <li>Save the exported CSV in the Files app.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="note" style="margin-top:18px;" data-lang="ja">
         時刻は「07:30」のように24時間表記で入力してください。CSVを読み込めない場合は、列名が一致しているか、複数時刻がカンマ区切りになっているかを確認してください。
+      </div>
+      <div class="note" style="margin-top:18px;" data-lang="en">
+        Enter times in 24-hour format, such as “07:30”. If the CSV cannot be imported, check that the column names match and that multiple times are comma-separated.
       </div>
     </section>
 
     <section id="alarm">
-      <div class="section-title"><span>5</span><h2>アラームを登録する</h2></div>
-      <div class="two-col">
+      <div class="section-title" data-lang="ja"><span>5</span><h2>アラームを登録する</h2></div>
+      <div class="section-title" data-lang="en"><span>5</span><h2>Registering alarms</h2></div>
+      <div class="two-col" data-lang="ja">
         <div class="card">
           <h3>登録手順</h3>
           <ol class="steps">
             <li>勤務セットを選択します。</li>
             <li>泊まり＋明けの場合は、泊まり仕業と明け仕業を選択します。</li>
             <li>「この勤務で全アラーム登録」をタップします。</li>
-            <li>登録済みアラーム一覧で内容を確認します。</li>
+            <li>ホームの次アラームカード、または登録済みアラーム一覧で内容を確認します。</li>
           </ol>
         </div>
-        <div class="card">
+        <div class="card beginner">
           <h3>基準時刻とアラーム時刻</h3>
           <p>基準時刻は勤務表上の元時刻です。アラーム時刻は、設定した「○分前」を引いた実際に鳴る時刻です。</p>
           <pre class="code-block">例：
@@ -570,11 +894,32 @@ C1,平日明け,"07:13,10:18",06:40,07:37</pre>
 実際に鳴る時刻 07:25</pre>
         </div>
       </div>
+
+      <div class="two-col" data-lang="en">
+        <div class="card">
+          <h3>Steps</h3>
+          <ol class="steps">
+            <li>Select a duty set.</li>
+            <li>For stay-and-after duties, select both the stay duty and after duty.</li>
+            <li>Tap “Register all alarms for this duty”.</li>
+            <li>Check the Next Alarm card or the registered alarm list.</li>
+          </ol>
+        </div>
+        <div class="card beginner">
+          <h3>Base time and alarm time</h3>
+          <p>The base time is the original time from the duty roster. The alarm time is the actual time after subtracting the configured offset.</p>
+          <pre class="code-block">Example:
+Base time 07:30
+Report alarm 5 minutes before
+Actual alarm time 07:25</pre>
+        </div>
+      </div>
     </section>
 
     <section id="notice">
-      <div class="section-title"><span>6</span><h2>事前通知</h2></div>
-      <div class="two-col">
+      <div class="section-title" data-lang="ja"><span>6</span><h2>事前通知</h2></div>
+      <div class="section-title" data-lang="en"><span>6</span><h2>Pre-alert notifications</h2></div>
+      <div class="two-col" data-lang="ja">
         <div class="card">
           <h3>アラーム時刻のさらに前に通知</h3>
           <p>事前通知は、実際に鳴るアラーム時刻のさらに○分前に通知する機能です。起床・出場・信号現示ごとにオン／オフと通知タイミングを設定できます。</p>
@@ -592,53 +937,119 @@ C1,平日明け,"07:13,10:18",06:40,07:37</pre>
 {minutes}    事前通知の分数</pre>
         </div>
       </div>
+
+      <div class="two-col" data-lang="en">
+        <div class="card">
+          <h3>Notify before the alarm time</h3>
+          <p>A pre-alert notification appears a configured number of minutes before the actual alarm time. You can configure it separately for wake-up, report, and check notifications.</p>
+          <pre class="code-block">Example:
+Base time: 07:30
+Report alarm: 5 minutes before → rings at 07:25
+Pre-alert: 10 minutes before → notifies at 07:15</pre>
+        </div>
+        <div class="card">
+          <h3>Editing notification text</h3>
+          <p>You can customize the pre-alert message for wake-up and report alarms. The following placeholders are automatically replaced when the notification is shown.</p>
+          <pre class="code-block">{title}      Alarm title
+{notifyTime} Alarm time
+{baseTime}   Base time
+{minutes}    Pre-alert minutes</pre>
+        </div>
+      </div>
     </section>
 
     <section id="signal">
-      <div class="section-title"><span>7</span><h2>信号現示の設定</h2></div>
-      <div class="card mode-card">
+      <div class="section-title" data-lang="ja"><span>7</span><h2>信号現示・確認通知の設定</h2></div>
+      <div class="section-title" data-lang="en"><span>7</span><h2>Check notification settings</h2></div>
+      <div class="card mode-card" data-lang="ja">
         <div class="mode-row"><strong>アラーム</strong><span>信号現示をAlarmKitのアラームとして登録します。停止後は次アラーム進行の対象になります。</span></div>
-        <div class="mode-row"><strong>通知のみ</strong><span>信号現示をアラームとして鳴らさず、iPhoneやApple Watchへの通知でお知らせします。登録済みアラーム一覧や次アラーム表示には入りません。</span></div>
+        <div class="mode-row"><strong>通知のみ</strong><span>信号現示をアラームとして鳴らさず、iPhoneやApple Watchへの通知でお知らせします。確認通知一覧で確認できます。</span></div>
         <div class="mode-row"><strong>使用しない</strong><span>信号現示のアラームも通知も登録しません。</span></div>
+      </div>
+      <div class="card mode-card" data-lang="en">
+        <div class="mode-row"><strong>Alarm</strong><span>Registers check notifications as AlarmKit alarms. After stopping, they are included in next-alarm progression.</span></div>
+        <div class="mode-row"><strong>Notification only</strong><span>Does not ring as an alarm. Instead, it sends a notification to iPhone or Apple Watch and can be checked in the check notification list.</span></div>
+        <div class="mode-row"><strong>Off</strong><span>No alarm or notification is registered for check notification times.</span></div>
       </div>
     </section>
 
     <section id="small">
-      <div class="section-title"><span>8</span><h2>小さい画面のiPhone向け表示</h2></div>
-      <div class="card">
-        <p>小さい画面のiPhoneでは、勤務選択時にスクロール操作とホイールピッカー操作が重なりやすい場合があります。v1.0.1では、該当端末ではメニュー方式を標準表示にし、設定画面からホイールピッカー表示に切り替えられるようにしました。</p>
+      <div class="section-title" data-lang="ja"><span>8</span><h2>小さい画面のiPhone向け表示</h2></div>
+      <div class="section-title" data-lang="en"><span>8</span><h2>Display on smaller iPhones</h2></div>
+      <div class="card" data-lang="ja">
+        <p>小さい画面のiPhoneでは、勤務選択時にスクロール操作とホイールピッカー操作が重なりやすい場合があります。そのため、該当端末ではメニュー方式を標準表示にし、設定画面からホイールピッカー表示に切り替えられるようにしています。</p>
+      </div>
+      <div class="card" data-lang="en">
+        <p>On smaller iPhones, scrolling and wheel picker gestures can overlap during duty selection. For those devices, the app uses menu-style selection by default, and you can switch back to wheel pickers from Settings.</p>
       </div>
     </section>
 
     <section id="live">
-      <div class="section-title"><span>9</span><h2>Dynamic Island / Live Activity</h2></div>
-      <div class="note">
+      <div class="section-title" data-lang="ja"><span>9</span><h2>Dynamic Island / Live Activity</h2></div>
+      <div class="section-title" data-lang="en"><span>9</span><h2>Dynamic Island / Live Activity</h2></div>
+      <div class="note" data-lang="ja">
         Live ActivityやDynamic Islandは補助表示です。iOSの集中モード、睡眠モード、低電力状態、長時間経過などにより表示されなくなる場合があります。アラーム本体と事前通知は、Live Activityの表示状態に関係なく動作します。
+      </div>
+      <div class="note" data-lang="en">
+        Live Activity and Dynamic Island are supplemental displays. They may disappear depending on iOS behavior, Focus mode, Sleep mode, Low Power Mode, or elapsed time. Alarms and pre-alert notifications work independently of the Live Activity display state.
       </div>
     </section>
 
     <section id="faq">
-      <div class="section-title"><span>10</span><h2>よくある質問</h2></div>
-      <div class="faq">
+      <div class="section-title" data-lang="ja"><span>10</span><h2>よくある質問</h2></div>
+      <div class="section-title" data-lang="en"><span>10</span><h2>FAQ</h2></div>
+      <div class="faq" data-lang="ja">
         <details><summary>CSVを読み込めません。</summary><p>ヘッダー名が指定フォーマットと一致しているか確認してください。特に「基準アラーム時刻（カンマ区切り）」の表記に注意してください。</p></details>
         <details><summary>信号現示をアラームではなく通知だけにできますか？</summary><p>できます。設定画面の「信号現示」で「通知のみ」を選ぶと、iPhoneやApple Watchに通知だけ届きます。</p></details>
-        <details><summary>通知のみの信号現示が登録済みアラーム一覧に出ません。</summary><p>通知のみの場合は、次アラーム進行に影響しないよう、登録済みアラーム一覧やLive Activityには表示しない仕様です。</p></details>
+        <details><summary>確認通知カードが出ません。</summary><p>設定画面で信号現示が「通知のみ」になっているか確認してください。「アラーム」や「使用しない」の場合、確認通知カードは表示されません。</p></details>
         <details><summary>Dynamic Islandが消えました。</summary><p>iOSの仕様により表示されなくなる場合があります。アラーム本体と事前通知は登録時刻に動作します。</p></details>
         <details><summary>通知が来ません。</summary><p>iPhoneの設定アプリで通知許可がオンになっているか確認してください。また、アプリ内の事前通知設定がオンになっているか確認してください。</p></details>
+      </div>
+      <div class="faq" data-lang="en">
+        <details><summary>The CSV cannot be imported.</summary><p>Check that the header names match the required format. Pay special attention to the base alarm times column name and comma-separated time values.</p></details>
+        <details><summary>Can check times be notifications only?</summary><p>Yes. In Settings, choose “Notification only” for check notifications. They will be delivered as notifications to iPhone or Apple Watch.</p></details>
+        <details><summary>The check notification card is not shown.</summary><p>Make sure the check notification mode is set to “Notification only” in Settings. If it is set to “Alarm” or “Off”, the check notification card is not shown.</p></details>
+        <details><summary>The Dynamic Island display disappeared.</summary><p>This can happen due to iOS behavior. The actual alarm and pre-alert notifications still work at the registered times.</p></details>
+        <details><summary>I do not receive notifications.</summary><p>Check that notification permission is enabled in the iPhone Settings app, and confirm that pre-alert notifications are enabled inside CrewAlarm.</p></details>
       </div>
     </section>
 
     <section id="contact">
-      <div class="section-title"><span>11</span><h2>お問い合わせ</h2></div>
+      <div class="section-title" data-lang="ja"><span>11</span><h2>お問い合わせ</h2></div>
+      <div class="section-title" data-lang="en"><span>11</span><h2>Contact</h2></div>
       <div class="card">
-        <p>不具合報告、ご質問、CSVファイルの作成方法についてのお問い合わせは、以下のメールアドレスまでご連絡ください。</p>
+        <p data-lang="ja">不具合報告、ご質問、CSVファイルの作成方法についてのお問い合わせは、以下のメールアドレスまでご連絡ください。</p>
+        <p data-lang="en">For bug reports, questions, or help with creating CSV files, please contact the following email address.</p>
         <p><strong><a href="mailto:crew.alarm.app2026@gmail.com">crew.alarm.app2026@gmail.com</a></strong></p>
+        <p><a href="privacy.html" data-lang="ja">プライバシーポリシーはこちら</a><a href="privacy.html" data-lang="en">Privacy Policy</a></p>
       </div>
     </section>
   </main>
 
   <footer class="page">
-    <p>© 2026 Junichiro Tokiyoshi / 出場アラーム</p>
+    <p data-lang="ja">© 2026 Junichiro Tokiyoshi / 出場アラーム</p>
+    <p data-lang="en">© 2026 Junichiro Tokiyoshi / CrewAlarm</p>
   </footer>
+
+  <script>
+    function setLanguage(lang) {
+      document.documentElement.setAttribute('data-current-lang', lang);
+      document.documentElement.setAttribute('lang', lang);
+      localStorage.setItem('crewAlarmSupportLang', lang);
+
+      const jaButton = document.getElementById('lang-ja');
+      const enButton = document.getElementById('lang-en');
+      jaButton.classList.toggle('active', lang === 'ja');
+      enButton.classList.toggle('active', lang === 'en');
+
+      document.title = lang === 'ja'
+        ? '出場アラーム サポート'
+        : 'CrewAlarm Support';
+    }
+
+    const savedLanguage = localStorage.getItem('crewAlarmSupportLang');
+    const browserLanguage = navigator.language && navigator.language.toLowerCase().startsWith('ja') ? 'ja' : 'en';
+    setLanguage(savedLanguage || browserLanguage || 'ja');
+  </script>
 </body>
 </html>

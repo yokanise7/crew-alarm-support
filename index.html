@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="出場アラーム / CrewAlarm v1.1.0 (10) Support Page" />
+  <meta name="description" content="出場アラーム / CrewAlarm v1.1.1 (16) Support Page" />
   <title>出場アラーム サポート</title>
   <style>
     :root {
@@ -73,7 +73,6 @@
 
     a { color: var(--blue); text-decoration: none; font-weight: 850; }
     a:hover { text-decoration: underline; }
-
     .page { width: min(1120px, calc(100% - 36px)); margin: 0 auto; }
 
     .topbar {
@@ -119,221 +118,56 @@
     .language-switch button.active { background: var(--blue); color: white; box-shadow: 0 8px 18px rgba(37,99,235,.25); }
 
     header { padding: 56px 0 44px; }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.12fr .88fr;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.76);
-      border: 1px solid rgba(255,255,255,.86);
-      color: var(--blue);
-      font-weight: 900;
-      box-shadow: var(--shadow-soft);
-      backdrop-filter: blur(12px);
-    }
-
-    h1 {
-      margin: 18px 0 14px;
-      font-size: clamp(38px, 6vw, 72px);
-      line-height: 1.04;
-      letter-spacing: -.06em;
-    }
-
-    .gradient-text {
-      background: linear-gradient(135deg, var(--blue), var(--purple), var(--orange));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .lead {
-      max-width: 760px;
-      margin: 0;
-      color: var(--muted);
-      font-size: clamp(17px, 2vw, 21px);
-    }
-
+    .hero { display: grid; grid-template-columns: 1.12fr .88fr; gap: 32px; align-items: center; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.76); border: 1px solid rgba(255,255,255,.86); color: var(--blue); font-weight: 900; box-shadow: var(--shadow-soft); backdrop-filter: blur(12px); }
+    h1 { margin: 18px 0 14px; font-size: clamp(38px, 6vw, 72px); line-height: 1.04; letter-spacing: -.06em; }
+    .gradient-text { background: linear-gradient(135deg, var(--blue), var(--purple), var(--orange)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .lead { max-width: 760px; margin: 0; color: var(--muted); font-size: clamp(17px, 2vw, 21px); }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
-
-    .cta-link, .ghost-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 11px 15px;
-      border-radius: 999px;
-      transition: .22s ease;
-    }
+    .cta-link, .ghost-link { display: inline-flex; align-items: center; gap: 8px; padding: 11px 15px; border-radius: 999px; transition: .22s ease; }
     .cta-link { color: white; background: var(--blue); box-shadow: 0 12px 26px rgba(37,99,235,.24); }
     .ghost-link { color: var(--text); background: rgba(255,255,255,.78); border: 1px solid rgba(255,255,255,.86); box-shadow: var(--shadow-soft); }
     .cta-link:hover, .ghost-link:hover { text-decoration: none; transform: translateY(-2px); }
 
-    .hero-card {
-      background: rgba(255,255,255,.74);
-      border: 1px solid rgba(255,255,255,.82);
-      border-radius: 34px;
-      padding: 24px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(16px);
-      animation: rise .85s ease both;
-    }
-
-    .phone-card {
-      min-height: 370px;
-      padding: 22px;
-      border-radius: 28px;
-      color: white;
-      background: linear-gradient(180deg, #101828, #182033);
-      box-shadow: 0 20px 48px rgba(16,24,40,.22);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      overflow: hidden;
-      position: relative;
-    }
-    .phone-card::before {
-      content: "";
-      position: absolute;
-      inset: -80px -60px auto auto;
-      width: 240px;
-      height: 240px;
-      border-radius: 50%;
-      background: rgba(37,99,235,.42);
-      filter: blur(12px);
-      animation: pulse 4.2s ease-in-out infinite alternate;
-    }
+    .hero-card { background: rgba(255,255,255,.74); border: 1px solid rgba(255,255,255,.82); border-radius: 34px; padding: 24px; box-shadow: var(--shadow); backdrop-filter: blur(16px); animation: rise .85s ease both; }
+    .phone-card { min-height: 370px; padding: 22px; border-radius: 28px; color: white; background: linear-gradient(180deg, #101828, #182033); box-shadow: 0 20px 48px rgba(16,24,40,.22); display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; position: relative; }
+    .phone-card::before { content: ""; position: absolute; inset: -80px -60px auto auto; width: 240px; height: 240px; border-radius: 50%; background: rgba(37,99,235,.42); filter: blur(12px); animation: pulse 4.2s ease-in-out infinite alternate; }
     .phone-card h2 { position: relative; margin: 0; font-size: 24px; line-height: 1.3; }
     .alarm-preview { position: relative; display: grid; gap: 12px; }
-    .alarm-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 12px 14px;
-      border-radius: 16px;
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.14);
-      backdrop-filter: blur(10px);
-      animation: rise .65s ease both;
-    }
+    .alarm-row { display: flex; justify-content: space-between; gap: 14px; padding: 12px 14px; border-radius: 16px; background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.14); backdrop-filter: blur(10px); animation: rise .65s ease both; }
     .alarm-row:nth-child(2) { animation-delay: .08s; }
     .alarm-row:nth-child(3) { animation-delay: .16s; }
     .alarm-row:nth-child(4) { animation-delay: .24s; }
     .alarm-row strong { font-size: 17px; }
     .time { font-variant-numeric: tabular-nums; font-weight: 950; }
-
     @keyframes pulse { from { opacity: .46; transform: scale(.96); } to { opacity: .88; transform: scale(1.08); } }
     @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      margin-bottom: 28px;
-      background: rgba(244,247,251,.78);
-      backdrop-filter: blur(16px);
-      border-top: 1px solid rgba(230,234,242,.56);
-      border-bottom: 1px solid rgba(230,234,242,.86);
-    }
-    .nav-inner {
-      width: min(1120px, calc(100% - 36px));
-      margin: 0 auto;
-      display: flex;
-      gap: 10px;
-      overflow-x: auto;
-      padding: 12px 0;
-      scrollbar-width: none;
-    }
+    nav { position: sticky; top: 0; z-index: 50; margin-bottom: 28px; background: rgba(244,247,251,.78); backdrop-filter: blur(16px); border-top: 1px solid rgba(230,234,242,.56); border-bottom: 1px solid rgba(230,234,242,.86); }
+    .nav-inner { width: min(1120px, calc(100% - 36px)); margin: 0 auto; display: flex; gap: 10px; overflow-x: auto; padding: 12px 0; scrollbar-width: none; }
     .nav-inner::-webkit-scrollbar { display: none; }
-    .nav-inner a {
-      white-space: nowrap;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.88);
-      color: var(--text);
-      font-size: 14px;
-      font-weight: 850;
-      border: 1px solid var(--line);
-      transition: .22s ease;
-    }
+    .nav-inner a { white-space: nowrap; padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,.88); color: var(--text); font-size: 14px; font-weight: 850; border: 1px solid var(--line); transition: .22s ease; }
     .nav-inner a:hover { text-decoration: none; transform: translateY(-2px); color: var(--blue); box-shadow: var(--shadow-soft); }
 
     main { padding-bottom: 80px; }
     section { scroll-margin-top: 78px; margin: 28px 0; }
     .section-title { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-    .section-title span {
-      display: grid;
-      place-items: center;
-      width: 38px;
-      height: 38px;
-      border-radius: 13px;
-      background: var(--blue-soft);
-      color: var(--blue);
-      font-weight: 950;
-      box-shadow: 0 8px 18px rgba(37,99,235,.08);
-    }
+    .section-title span { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 13px; background: var(--blue-soft); color: var(--blue); font-weight: 950; box-shadow: 0 8px 18px rgba(37,99,235,.08); }
     h2 { margin: 0; font-size: clamp(24px, 3vw, 36px); line-height: 1.25; letter-spacing: -.03em; }
-
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-
-    .card {
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,.80);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
-      transition: transform .22s ease, box-shadow .22s ease, opacity .7s ease, filter .7s ease;
-    }
+    .card { background: var(--card); border: 1px solid rgba(255,255,255,.80); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); backdrop-filter: blur(14px); transition: transform .22s ease, box-shadow .22s ease, opacity .7s ease, filter .7s ease; }
     .card:hover { transform: translateY(-3px); box-shadow: 0 26px 65px rgba(25,40,72,.14); }
     .card h3 { margin: 0 0 10px; font-size: 20px; line-height: 1.35; }
     .card p, .card li { color: var(--muted); }
     .beginner { border-left: 5px solid var(--green); background: linear-gradient(135deg, var(--green-soft), rgba(255,255,255,.84)); }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(26px) scale(.985);
-      filter: blur(8px);
-    }
-    .reveal.is-visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      filter: blur(0);
-    }
+    .reveal { opacity: 0; transform: translateY(26px) scale(.985); filter: blur(8px); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
     .reveal.is-visible:hover { transform: translateY(-3px); }
 
     .steps { counter-reset: step; list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
-    .steps li {
-      counter-increment: step;
-      display: grid;
-      grid-template-columns: 36px 1fr;
-      gap: 12px;
-      padding: 14px;
-      border-radius: 16px;
-      background: rgba(248,250,252,.92);
-      border: 1px solid rgba(230,234,242,.74);
-      color: var(--text);
-    }
-    .steps li::before {
-      content: counter(step);
-      width: 32px;
-      height: 32px;
-      display: grid;
-      place-items: center;
-      border-radius: 999px;
-      background: var(--blue);
-      color: white;
-      font-weight: 950;
-    }
-
+    .steps li { counter-increment: step; display: grid; grid-template-columns: 36px 1fr; gap: 12px; padding: 14px; border-radius: 16px; background: rgba(248,250,252,.92); border: 1px solid rgba(230,234,242,.74); color: var(--text); }
+    .steps li::before { content: counter(step); width: 32px; height: 32px; display: grid; place-items: center; border-radius: 999px; background: var(--blue); color: white; font-weight: 950; }
     .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
     .tag { display: inline-flex; padding: 6px 10px; border-radius: 999px; font-weight: 950; font-size: 13px; }
     .tag.blue { background: var(--blue-soft); color: var(--blue); }
@@ -343,18 +177,7 @@
     .tag.pink { background: var(--pink-soft); color: var(--pink); }
     .tag.yellow { background: var(--yellow-soft); color: var(--yellow); }
 
-    .code-block {
-      background: #0f172a;
-      color: #e5e7eb;
-      border-radius: 18px;
-      padding: 18px;
-      overflow-x: auto;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 14px;
-      line-height: 1.7;
-      box-shadow: 0 16px 36px rgba(15,23,42,.16);
-    }
-
+    .code-block { background: #0f172a; color: #e5e7eb; border-radius: 18px; padding: 18px; overflow-x: auto; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 14px; line-height: 1.7; box-shadow: 0 16px 36px rgba(15,23,42,.16); }
     .sample-table-wrap { margin-top: 18px; overflow-x: auto; border: 1px solid var(--line); border-radius: 18px; background: white; box-shadow: 0 12px 28px rgba(25,40,72,.05); }
     .sample-table { width: 100%; border-collapse: collapse; min-width: 760px; font-size: 14px; }
     .sample-table th, .sample-table td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
@@ -371,12 +194,24 @@
     .mode-row strong { display: block; color: var(--text); margin-bottom: 4px; }
     .mode-row span { color: var(--muted); }
 
+    .widget-showcase { display: grid; grid-template-columns: 220px 1fr; gap: 18px; align-items: center; }
+    .widget-small-demo, .widget-wide-demo { background: linear-gradient(145deg, rgba(255,255,255,.95), rgba(235,244,255,.92)); border: 1px solid rgba(255,255,255,.86); box-shadow: var(--shadow-soft); }
+    .widget-small-demo { width: 148px; height: 148px; border-radius: 34px; display: grid; place-items: center; margin: 0 auto; }
+    .ring { width: 104px; height: 104px; border-radius: 999px; background: conic-gradient(var(--blue) 0 72%, rgba(37,99,235,.14) 72% 100%); display: grid; place-items: center; }
+    .ring-inner { width: 82px; height: 82px; border-radius: 999px; background: rgba(255,255,255,.92); display: grid; place-items: center; text-align: center; font-weight: 950; }
+    .ring-inner small { display: block; color: var(--muted); font-weight: 800; font-size: 11px; }
+    .widget-wide-demo { border-radius: 28px; padding: 18px; }
+    .widget-wide-head { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 14px; }
+    .widget-wide-title { font-weight: 950; }
+    .widget-wide-time { font-size: 30px; line-height: 1; font-weight: 950; color: var(--blue); font-variant-numeric: tabular-nums; }
+    .progress { height: 10px; border-radius: 999px; background: rgba(37,99,235,.14); overflow: hidden; }
+    .progress span { display: block; height: 100%; width: 68%; border-radius: inherit; background: var(--blue); }
+
     .faq { display: grid; gap: 12px; }
     details { background: rgba(255,255,255,.86); border: 1px solid var(--line); border-radius: 18px; padding: 16px 18px; box-shadow: 0 10px 26px rgba(25,40,72,.05); transition: .22s ease; }
     details:hover { transform: translateY(-2px); box-shadow: var(--shadow-soft); }
     summary { cursor: pointer; font-weight: 950; color: var(--text); }
     details p { margin-bottom: 0; color: var(--muted); }
-
     footer { border-top: 1px solid var(--line); padding: 28px 0 48px; color: var(--muted); text-align: center; }
 
     [data-lang] { display: none; }
@@ -384,7 +219,7 @@
     html[data-current-lang="en"] [data-lang="en"] { display: revert; }
 
     @media (max-width: 860px) {
-      .hero, .two-col, .grid { grid-template-columns: 1fr; }
+      .hero, .two-col, .grid, .widget-showcase { grid-template-columns: 1fr; }
       header { padding-top: 42px; }
       .topbar { align-items: stretch; flex-direction: column; }
       .language-switch { justify-content: center; }
@@ -400,11 +235,11 @@
   <div class="ambient" aria-hidden="true"></div>
 
   <div class="topbar">
-    <div class="version-pill" data-lang="ja">🚆 出場アラーム v1.1.0（10）サポート</div>
-    <div class="version-pill" data-lang="en">🚆 CrewAlarm v1.1.0 (10) Support</div>
+    <div class="version-pill" data-lang="ja">🚆 出場アラーム v1.1.1（16）サポート</div>
+    <div class="version-pill" data-lang="en">🚆 CrewAlarm v1.1.1 (16) Support</div>
     <div class="language-switch" aria-label="Language switch">
-      <button type="button" id="lang-ja" class="active" onclick="setLanguage('ja')">日本語</button>
-      <button type="button" id="lang-en" onclick="setLanguage('en')">English</button>
+      <button type="button" id="lang-ja" class="active" data-lang-button="ja">日本語</button>
+      <button type="button" id="lang-en" data-lang-button="en">English</button>
     </div>
   </div>
 
@@ -413,29 +248,29 @@
       <div data-lang="ja">
         <div class="badge">はじめてでも安心</div>
         <h1><span class="gradient-text">出場アラーム</span><br />サポート</h1>
-        <p class="lead">出場アラームは、勤務表CSVから起床・出場・確認通知のアラームをまとめて作成するアプリです。このページでは、CSVの作り方からiPhoneへの保存、アラーム登録、Live ActivityやApple Watch表示まで、初心者にも分かりやすく説明します。</p>
-        <div class="hero-actions"><a class="cta-link" href="#start">まず初回設定を見る →</a><a class="ghost-link" href="#csv">CSVの作り方を見る</a></div>
+        <p class="lead">出場アラームは、勤務表CSVから起床・出場・確認通知のアラームをまとめて作成するアプリです。このページでは、CSVの作り方、iPhoneへの保存、アラーム登録、ウィジェット、Live Activity、Apple Watch表示まで説明します。</p>
+        <div class="hero-actions"><a class="cta-link" href="#start">まず初回設定を見る →</a><a class="ghost-link" href="#widgets">ウィジェットの追加方法を見る</a></div>
       </div>
       <div data-lang="en">
         <div class="badge">Beginner-friendly guide</div>
         <h1><span class="gradient-text">CrewAlarm</span><br />Support</h1>
-        <p class="lead">CrewAlarm creates wake-up, report, and check notification alarms from a duty roster CSV file. This page explains CSV preparation, saving the file to iPhone, alarm registration, Live Activities, and Apple Watch display in an easy-to-follow way.</p>
-        <div class="hero-actions"><a class="cta-link" href="#start">Start with initial setup →</a><a class="ghost-link" href="#csv">Learn CSV preparation</a></div>
+        <p class="lead">CrewAlarm creates wake-up, report, and check notification alarms from a duty roster CSV file. This page explains CSV preparation, alarm registration, widgets, Live Activities, and Apple Watch display.</p>
+        <div class="hero-actions"><a class="cta-link" href="#start">Start with initial setup →</a><a class="ghost-link" href="#widgets">Add widgets</a></div>
       </div>
       <div class="hero-card">
         <div class="phone-card">
           <h2 data-lang="ja">勤務に合わせて<br />アラームと通知を管理</h2>
           <h2 data-lang="en">Manage alarms and notifications<br />for each duty</h2>
-          <div class="alarm-preview" data-lang="ja"><div class="alarm-row"><strong>起床</strong><span class="time">06:54</span></div><div class="alarm-row"><strong>出場</strong><span class="time">07:14</span></div><div class="alarm-row"><strong>確認通知</strong><span class="time">07:37</span></div><div class="alarm-row"><strong>Live Activity</strong><span class="time">表示中</span></div></div>
-          <div class="alarm-preview" data-lang="en"><div class="alarm-row"><strong>Wake-up</strong><span class="time">06:54</span></div><div class="alarm-row"><strong>Report</strong><span class="time">07:14</span></div><div class="alarm-row"><strong>Check notification</strong><span class="time">07:37</span></div><div class="alarm-row"><strong>Live Activity</strong><span class="time">Active</span></div></div>
+          <div class="alarm-preview" data-lang="ja"><div class="alarm-row"><strong>起床</strong><span class="time">06:54</span></div><div class="alarm-row"><strong>出場</strong><span class="time">07:14</span></div><div class="alarm-row"><strong>確認通知</strong><span class="time">07:37</span></div><div class="alarm-row"><strong>ウィジェット</strong><span class="time">あと18分</span></div></div>
+          <div class="alarm-preview" data-lang="en"><div class="alarm-row"><strong>Wake-up</strong><span class="time">06:54</span></div><div class="alarm-row"><strong>Report</strong><span class="time">07:14</span></div><div class="alarm-row"><strong>Check notification</strong><span class="time">07:37</span></div><div class="alarm-row"><strong>Widget</strong><span class="time">18 min left</span></div></div>
         </div>
       </div>
     </div>
   </header>
 
   <nav>
-    <div class="nav-inner" data-lang="ja"><a href="#about">概要</a><a href="#new">v1.1.0</a><a href="#start">初回設定</a><a href="#csv">CSV作成</a><a href="#numbers">Numbers</a><a href="#excel">Excel</a><a href="#iphone">iPhone保存</a><a href="#alarm">アラーム登録</a><a href="#notice">事前通知</a><a href="#check">確認通知</a><a href="#live">Live Activity</a><a href="#small">小さい画面</a><a href="#faq">FAQ</a><a href="#contact">お問い合わせ</a></div>
-    <div class="nav-inner" data-lang="en"><a href="#about">Overview</a><a href="#new">v1.1.0</a><a href="#start">Setup</a><a href="#csv">CSV</a><a href="#numbers">Numbers</a><a href="#excel">Excel</a><a href="#iphone">Save to iPhone</a><a href="#alarm">Alarms</a><a href="#notice">Pre-alerts</a><a href="#check">Check notifications</a><a href="#live">Live Activity</a><a href="#small">Small screens</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div>
+    <div class="nav-inner" data-lang="ja"><a href="#about">概要</a><a href="#new">v1.1.1</a><a href="#start">初回設定</a><a href="#csv">CSV作成</a><a href="#numbers">Numbers</a><a href="#excel">Excel</a><a href="#iphone">iPhone保存</a><a href="#alarm">アラーム登録</a><a href="#notice">事前通知</a><a href="#check">確認通知</a><a href="#widgets">ウィジェット</a><a href="#live">Live Activity</a><a href="#small">小さい画面</a><a href="#faq">FAQ</a><a href="#contact">お問い合わせ</a></div>
+    <div class="nav-inner" data-lang="en"><a href="#about">Overview</a><a href="#new">v1.1.1</a><a href="#start">Setup</a><a href="#csv">CSV</a><a href="#numbers">Numbers</a><a href="#excel">Excel</a><a href="#iphone">Save to iPhone</a><a href="#alarm">Alarms</a><a href="#notice">Pre-alerts</a><a href="#check">Check notifications</a><a href="#widgets">Widgets</a><a href="#live">Live Activity</a><a href="#small">Small screens</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div>
   </nav>
 
   <main class="page">
@@ -446,15 +281,15 @@
     </section>
 
     <section id="new">
-      <div class="section-title" data-lang="ja"><span>2</span><h2>v1.1.0（10）の主な内容</h2></div><div class="section-title" data-lang="en"><span>2</span><h2>Main points in v1.1.0 (10)</h2></div>
-      <div class="grid" data-lang="ja"><div class="card"><h3>確認通知一覧</h3><p>通知のみで登録した確認通知を、専用の一覧で確認できます。</p><div class="tag-row"><span class="tag green">確認通知</span><span class="tag blue">一覧表示</span></div></div><div class="card"><h3>平日/休日ダイヤ表示</h3><p>次のアラーム、登録済みアラーム、確認通知で、平日ダイヤ・休日ダイヤが分かりやすく表示されます。</p><div class="tag-row"><span class="tag blue">平日ダイヤ</span><span class="tag pink">休日ダイヤ</span></div></div><div class="card"><h3>サポート導線</h3><p>設定画面から、サポートページ・お問い合わせ・プライバシーポリシーを開けます。</p><div class="tag-row"><span class="tag purple">サポート</span><span class="tag green">お問い合わせ</span></div></div></div>
-      <div class="grid" data-lang="en"><div class="card"><h3>Check notification list</h3><p>Check notifications registered as notification-only items can be reviewed in a dedicated list.</p><div class="tag-row"><span class="tag green">Check notifications</span><span class="tag blue">List view</span></div></div><div class="card"><h3>Weekday / holiday display</h3><p>The next alarm, registered alarms, and check notifications clearly show whether they belong to a weekday or holiday timetable.</p><div class="tag-row"><span class="tag blue">Weekday</span><span class="tag pink">Holiday</span></div></div><div class="card"><h3>Support links</h3><p>The Settings screen includes links to the support page, contact email, and privacy policy.</p><div class="tag-row"><span class="tag purple">Support</span><span class="tag green">Contact</span></div></div></div>
+      <div class="section-title" data-lang="ja"><span>2</span><h2>v1.1.1（16）の主な内容</h2></div><div class="section-title" data-lang="en"><span>2</span><h2>Main points in v1.1.1 (16)</h2></div>
+      <div class="grid" data-lang="ja"><div class="card"><h3>ウィジェット表示を改善</h3><p>ホーム画面・ロック画面ウィジェットで、残り時間やプログレス表示を確認しやすくしました。</p><div class="tag-row"><span class="tag blue">ウィジェット</span><span class="tag green">カウントダウン</span></div></div><div class="card"><h3>確認通知の安定性を改善</h3><p>通知のみの確認通知がホームや一覧に残り続ける問題を改善しました。</p><div class="tag-row"><span class="tag green">確認通知</span><span class="tag purple">通知のみ</span></div></div><div class="card"><h3>平日/休日ダイヤ表示を改善</h3><p>アラーム完了後や再起動後でも、平日ダイヤ・休日ダイヤが正しく表示されるよう改善しました。</p><div class="tag-row"><span class="tag blue">平日ダイヤ</span><span class="tag pink">休日ダイヤ</span></div></div></div>
+      <div class="grid" data-lang="en"><div class="card"><h3>Improved widgets</h3><p>Home Screen and Lock Screen widgets now show countdown and progress information more clearly.</p><div class="tag-row"><span class="tag blue">Widgets</span><span class="tag green">Countdown</span></div></div><div class="card"><h3>Improved check notifications</h3><p>Notification-only check notifications are handled more reliably after their notification time has passed.</p><div class="tag-row"><span class="tag green">Check notifications</span><span class="tag purple">Notification only</span></div></div><div class="card"><h3>Improved timetable display</h3><p>Weekday and holiday timetable labels are now more stable after alarm completion and app relaunch.</p><div class="tag-row"><span class="tag blue">Weekday</span><span class="tag pink">Holiday</span></div></div></div>
     </section>
 
     <section id="start">
       <div class="section-title" data-lang="ja"><span>3</span><h2>初回設定</h2></div><div class="section-title" data-lang="en"><span>3</span><h2>Initial setup</h2></div>
-      <div class="two-col" data-lang="ja"><div class="card beginner"><h3>まずはこの順番で進めてください</h3><ol class="steps"><li>アプリを起動し、通知やLive Activityの許可を確認します。</li><li>NumbersまたはExcelでCSVファイルを作ります。</li><li>CSVファイルをiPhoneの「ファイル」アプリに保存します。</li><li>アプリの「CSVを読み込む」から勤務表CSVを選択します。</li><li>勤務セットと仕業を選び、「この勤務で全アラーム登録」をタップします。</li></ol></div><div class="card"><h3>許可について</h3><p>アラーム、事前通知、Live Activity表示のために、iOSの許可画面が表示される場合があります。表示されたら許可してください。</p><div class="tag-row"><span class="tag blue">通知</span><span class="tag orange">AlarmKit</span><span class="tag purple">Live Activity</span></div></div></div>
-      <div class="two-col" data-lang="en"><div class="card beginner"><h3>Follow these steps first</h3><ol class="steps"><li>Open the app and allow notifications or Live Activities if prompted.</li><li>Create a CSV file using Numbers or Excel.</li><li>Save the CSV file to the Files app on iPhone.</li><li>Select your duty roster CSV from “Import CSV”.</li><li>Select the duty set and duty code, then tap “Register all alarms for this duty”.</li></ol></div><div class="card"><h3>Permissions</h3><p>iOS may ask for permission to use alarms, pre-alert notifications, and Live Activity displays. Please allow them when prompted.</p><div class="tag-row"><span class="tag blue">Notifications</span><span class="tag orange">AlarmKit</span><span class="tag purple">Live Activity</span></div></div></div>
+      <div class="two-col" data-lang="ja"><div class="card beginner"><h3>まずはこの順番で進めてください</h3><ol class="steps"><li>アプリを起動し、通知やLive Activityの許可を確認します。</li><li>NumbersまたはExcelでCSVファイルを作ります。</li><li>CSVファイルをiPhoneの「ファイル」アプリに保存します。</li><li>アプリの「CSVを読み込む」から勤務表CSVを選択します。</li><li>勤務セットと仕業を選び、「この勤務で全アラーム登録」をタップします。</li><li>必要に応じてホーム画面やロック画面にウィジェットを追加します。</li></ol></div><div class="card"><h3>許可について</h3><p>アラーム、事前通知、Live Activity表示、ウィジェット更新のために、iOSの許可や設定確認が必要になる場合があります。表示されたら許可してください。</p><div class="tag-row"><span class="tag blue">通知</span><span class="tag orange">AlarmKit</span><span class="tag purple">Live Activity</span><span class="tag green">Widget</span></div></div></div>
+      <div class="two-col" data-lang="en"><div class="card beginner"><h3>Follow these steps first</h3><ol class="steps"><li>Open the app and allow notifications or Live Activities if prompted.</li><li>Create a CSV file using Numbers or Excel.</li><li>Save the CSV file to the Files app on iPhone.</li><li>Select your duty roster CSV from “Import CSV”.</li><li>Select the duty set and duty code, then tap “Register all alarms for this duty”.</li><li>Add Home Screen or Lock Screen widgets if needed.</li></ol></div><div class="card"><h3>Permissions</h3><p>iOS may ask for permission to use alarms, notifications, Live Activities, and widget updates. Please allow them when prompted.</p><div class="tag-row"><span class="tag blue">Notifications</span><span class="tag orange">AlarmKit</span><span class="tag purple">Live Activity</span><span class="tag green">Widget</span></div></div></div>
     </section>
 
     <section id="csv">
@@ -472,60 +307,37 @@ C1,Weekday After,"07:13,10:18",06:40,07:37</pre><div class="sample-table-wrap"><
 
     <section id="numbers">
       <div class="section-title" data-lang="ja"><span>5</span><h2>NumbersでCSVを作る方法</h2></div><div class="section-title" data-lang="en"><span>5</span><h2>Creating a CSV file with Numbers</h2></div>
-      <div class="two-col" data-lang="ja">
-        <div class="card beginner"><h3>MacのNumbersで作る場合</h3><ol class="steps"><li>Numbersを開き、新規書類を作成します。</li><li>1行目に「勤務名」「カテゴリ」「基準アラーム時刻（カンマ区切り）」「基準起床時間」「確認通知の時間」を入力します。</li><li>2行目以降に勤務データを入力します。</li><li>複数の出場時刻は、同じセルの中に「07:11,10:23,13:28」のように入力します。</li><li>メニューの「ファイル」→「書き出す」→「CSV」を選びます。</li><li>文字コードを選べる場合は「Unicode（UTF-8）」を選び、保存します。</li></ol></div>
-        <div class="card"><h3>iPhone / iPadのNumbersで作る場合</h3><ol class="steps"><li>Numbersアプリで表を作成します。</li><li>Mac版と同じ列名を1行目に入力します。</li><li>右上の「…」または共有ボタンをタップします。</li><li>「書き出し」または「送信」から「CSV」を選びます。</li><li>保存先に「ファイルに保存」を選びます。</li><li>「このiPhone内」または「iCloud Drive」に保存します。</li></ol></div>
-      </div>
-      <div class="two-col" data-lang="en">
-        <div class="card beginner"><h3>Using Numbers on Mac</h3><ol class="steps"><li>Open Numbers and create a new spreadsheet.</li><li>Enter “Duty Name”, “Category”, “Base Alarm Times”, “Wake-up Time”, and “Check Notification Time” in the first row.</li><li>Enter duty data from the second row onward.</li><li>For multiple report times, enter them in the same cell, such as “07:11,10:23,13:28”.</li><li>Choose File → Export To → CSV.</li><li>If available, choose Unicode (UTF-8), then save the file.</li></ol></div>
-        <div class="card"><h3>Using Numbers on iPhone / iPad</h3><ol class="steps"><li>Create a spreadsheet in the Numbers app.</li><li>Enter the same column names in the first row.</li><li>Tap the “…” button or share button.</li><li>Choose Export or Send, then select CSV.</li><li>Choose “Save to Files”.</li><li>Save it to “On My iPhone” or “iCloud Drive”.</li></ol></div>
-      </div>
-      <div class="tip" style="margin-top:18px;" data-lang="ja">Numbersで作る場合、表の中にタイトル行や説明文を追加せず、1行目からCSV用の列名を入れると読み込みが安定します。</div>
-      <div class="tip" style="margin-top:18px;" data-lang="en">When using Numbers, avoid adding extra title rows or notes above the table. Put the CSV column names directly in the first row for stable import.</div>
+      <div class="two-col" data-lang="ja"><div class="card beginner"><h3>MacのNumbersで作る場合</h3><ol class="steps"><li>Numbersを開き、新規書類を作成します。</li><li>1行目に「勤務名」「カテゴリ」「基準アラーム時刻（カンマ区切り）」「基準起床時間」「確認通知の時間」を入力します。</li><li>2行目以降に勤務データを入力します。</li><li>複数の出場時刻は、同じセルの中に「07:11,10:23,13:28」のように入力します。</li><li>メニューの「ファイル」→「書き出す」→「CSV」を選びます。</li><li>文字コードを選べる場合は「Unicode（UTF-8）」を選び、保存します。</li></ol></div><div class="card"><h3>iPhone / iPadのNumbersで作る場合</h3><ol class="steps"><li>Numbersアプリで表を作成します。</li><li>Mac版と同じ列名を1行目に入力します。</li><li>右上の「…」または共有ボタンをタップします。</li><li>「書き出し」または「送信」から「CSV」を選びます。</li><li>保存先に「ファイルに保存」を選びます。</li><li>「このiPhone内」または「iCloud Drive」に保存します。</li></ol></div></div>
+      <div class="two-col" data-lang="en"><div class="card beginner"><h3>Using Numbers on Mac</h3><ol class="steps"><li>Open Numbers and create a new spreadsheet.</li><li>Enter “Duty Name”, “Category”, “Base Alarm Times”, “Wake-up Time”, and “Check Notification Time” in the first row.</li><li>Enter duty data from the second row onward.</li><li>For multiple report times, enter them in the same cell, such as “07:11,10:23,13:28”.</li><li>Choose File → Export To → CSV.</li><li>If available, choose Unicode (UTF-8), then save the file.</li></ol></div><div class="card"><h3>Using Numbers on iPhone / iPad</h3><ol class="steps"><li>Create a spreadsheet in the Numbers app.</li><li>Enter the same column names in the first row.</li><li>Tap the “…” button or share button.</li><li>Choose Export or Send, then select CSV.</li><li>Choose “Save to Files”.</li><li>Save it to “On My iPhone” or “iCloud Drive”.</li></ol></div></div>
+      <div class="tip" style="margin-top:18px;" data-lang="ja">Numbersで作る場合、表の中にタイトル行や説明文を追加せず、1行目からCSV用の列名を入れると読み込みが安定します。</div><div class="tip" style="margin-top:18px;" data-lang="en">When using Numbers, avoid adding extra title rows or notes above the table. Put the CSV column names directly in the first row for stable import.</div>
     </section>
 
     <section id="excel">
       <div class="section-title" data-lang="ja"><span>6</span><h2>ExcelでCSVを作る方法</h2></div><div class="section-title" data-lang="en"><span>6</span><h2>Creating a CSV file with Excel</h2></div>
-      <div class="two-col" data-lang="ja">
-        <div class="card beginner"><h3>Mac / WindowsのExcelで作る場合</h3><ol class="steps"><li>Excelを開き、新しいブックを作成します。</li><li>1行目に必要な列名を入力します。</li><li>2行目以降に勤務データを入力します。</li><li>時刻は「07:30」のように24時間表記で入力します。</li><li>「ファイル」→「名前を付けて保存」を選びます。</li><li>ファイル形式で「CSV UTF-8（コンマ区切り）」を選んで保存します。</li></ol></div>
-        <div class="card"><h3>Excelで気をつけること</h3><p>Excelは時刻を自動変換することがあります。表示が「7:30」になっても読み込める場合がありますが、うまくいかない時はセルの表示形式を「文字列」にしてから入力してください。</p><pre class="code-block">おすすめの入力例
+      <div class="two-col" data-lang="ja"><div class="card beginner"><h3>Mac / WindowsのExcelで作る場合</h3><ol class="steps"><li>Excelを開き、新しいブックを作成します。</li><li>1行目に必要な列名を入力します。</li><li>2行目以降に勤務データを入力します。</li><li>時刻は「07:30」のように24時間表記で入力します。</li><li>「ファイル」→「名前を付けて保存」を選びます。</li><li>ファイル形式で「CSV UTF-8（コンマ区切り）」を選んで保存します。</li></ol></div><div class="card"><h3>Excelで気をつけること</h3><p>Excelは時刻を自動変換することがあります。表示が「7:30」になっても読み込める場合がありますが、うまくいかない時はセルの表示形式を「文字列」にしてから入力してください。</p><pre class="code-block">おすすめの入力例
 07:30
 16:54
 23:10
-00:25</pre><div class="tag-row"><span class="tag blue">CSV UTF-8</span><span class="tag orange">コンマ区切り</span><span class="tag yellow">24時間表記</span></div></div>
-      </div>
-      <div class="two-col" data-lang="en">
-        <div class="card beginner"><h3>Using Excel on Mac / Windows</h3><ol class="steps"><li>Open Excel and create a new workbook.</li><li>Enter the required column names in the first row.</li><li>Enter duty data from the second row onward.</li><li>Use 24-hour time format, such as “07:30”.</li><li>Choose File → Save As.</li><li>Select “CSV UTF-8 (Comma delimited)” and save the file.</li></ol></div>
-        <div class="card"><h3>Important Excel notes</h3><p>Excel may automatically convert time values. If import does not work as expected, set the cells to Text format before entering times.</p><pre class="code-block">Recommended examples
+00:25</pre><div class="tag-row"><span class="tag blue">CSV UTF-8</span><span class="tag orange">コンマ区切り</span><span class="tag yellow">24時間表記</span></div></div></div>
+      <div class="two-col" data-lang="en"><div class="card beginner"><h3>Using Excel on Mac / Windows</h3><ol class="steps"><li>Open Excel and create a new workbook.</li><li>Enter the required column names in the first row.</li><li>Enter duty data from the second row onward.</li><li>Use 24-hour time format, such as “07:30”.</li><li>Choose File → Save As.</li><li>Select “CSV UTF-8 (Comma delimited)” and save the file.</li></ol></div><div class="card"><h3>Important Excel notes</h3><p>Excel may automatically convert time values. If import does not work as expected, set the cells to Text format before entering times.</p><pre class="code-block">Recommended examples
 07:30
 16:54
 23:10
-00:25</pre><div class="tag-row"><span class="tag blue">CSV UTF-8</span><span class="tag orange">Comma delimited</span><span class="tag yellow">24-hour format</span></div></div>
-      </div>
-      <div class="note" style="margin-top:18px;" data-lang="ja">「CSV」とだけ表示される保存形式には、文字化けしやすいものがあります。選べる場合は「CSV UTF-8」をおすすめします。</div>
-      <div class="note" style="margin-top:18px;" data-lang="en">Some CSV formats may cause garbled Japanese text. If available, “CSV UTF-8” is recommended.</div>
+00:25</pre><div class="tag-row"><span class="tag blue">CSV UTF-8</span><span class="tag orange">Comma delimited</span><span class="tag yellow">24-hour format</span></div></div></div>
+      <div class="note" style="margin-top:18px;" data-lang="ja">「CSV」とだけ表示される保存形式には、文字化けしやすいものがあります。選べる場合は「CSV UTF-8」をおすすめします。</div><div class="note" style="margin-top:18px;" data-lang="en">Some CSV formats may cause garbled Japanese text. If available, “CSV UTF-8” is recommended.</div>
     </section>
 
     <section id="iphone">
       <div class="section-title" data-lang="ja"><span>7</span><h2>CSVをiPhoneに保存して読み込む方法</h2></div><div class="section-title" data-lang="en"><span>7</span><h2>Saving the CSV file to iPhone and importing it</h2></div>
-      <div class="grid" data-lang="ja">
-        <div class="card beginner"><h3>方法1：iCloud Driveを使う</h3><ol class="steps"><li>MacやWindowsでCSVを作成します。</li><li>iCloud DriveにCSVファイルを保存します。</li><li>iPhoneの「ファイル」アプリを開きます。</li><li>iCloud Drive内にCSVがあることを確認します。</li><li>出場アラームで「CSVを読み込む」をタップし、そのCSVを選びます。</li></ol></div>
-        <div class="card"><h3>方法2：AirDropを使う</h3><ol class="steps"><li>MacでCSVファイルを右クリックします。</li><li>「共有」→「AirDrop」を選びます。</li><li>自分のiPhoneを選びます。</li><li>iPhone側で受け取り、「ファイル」アプリに保存します。</li><li>出場アラームから保存したCSVを選びます。</li></ol></div>
-        <div class="card"><h3>方法3：メールやLINEから保存</h3><ol class="steps"><li>CSVファイルをメールやLINEでiPhoneに送ります。</li><li>添付ファイルを開きます。</li><li>共有ボタンをタップします。</li><li>「ファイルに保存」を選びます。</li><li>保存後、出場アラームからCSVを読み込みます。</li></ol></div>
-      </div>
-      <div class="grid" data-lang="en">
-        <div class="card beginner"><h3>Method 1: Use iCloud Drive</h3><ol class="steps"><li>Create the CSV file on Mac or Windows.</li><li>Save the CSV file to iCloud Drive.</li><li>Open the Files app on iPhone.</li><li>Confirm that the CSV file is visible in iCloud Drive.</li><li>In CrewAlarm, tap “Import CSV” and select the file.</li></ol></div>
-        <div class="card"><h3>Method 2: Use AirDrop</h3><ol class="steps"><li>Right-click the CSV file on Mac.</li><li>Choose Share → AirDrop.</li><li>Select your iPhone.</li><li>On iPhone, accept the file and save it to the Files app.</li><li>Select the saved CSV file from CrewAlarm.</li></ol></div>
-        <div class="card"><h3>Method 3: Save from email or messaging apps</h3><ol class="steps"><li>Send the CSV file to your iPhone by email or messaging app.</li><li>Open the attached file.</li><li>Tap the share button.</li><li>Choose “Save to Files”.</li><li>Import the saved CSV from CrewAlarm.</li></ol></div>
-      </div>
-      <div class="tip" style="margin-top:18px;" data-lang="ja">保存場所は「このiPhone内」でも「iCloud Drive」でも大丈夫です。迷った場合は、あとで見つけやすいように「iCloud Drive」内に「出場アラーム」などのフォルダを作って保存するのがおすすめです。</div>
-      <div class="tip" style="margin-top:18px;" data-lang="en">You can save the file either “On My iPhone” or in “iCloud Drive”. If unsure, create a folder such as “CrewAlarm” in iCloud Drive so the file is easy to find later.</div>
+      <div class="grid" data-lang="ja"><div class="card beginner"><h3>方法1：iCloud Driveを使う</h3><ol class="steps"><li>MacやWindowsでCSVを作成します。</li><li>iCloud DriveにCSVファイルを保存します。</li><li>iPhoneの「ファイル」アプリを開きます。</li><li>iCloud Drive内にCSVがあることを確認します。</li><li>出場アラームで「CSVを読み込む」をタップし、そのCSVを選びます。</li></ol></div><div class="card"><h3>方法2：AirDropを使う</h3><ol class="steps"><li>MacでCSVファイルを右クリックします。</li><li>「共有」→「AirDrop」を選びます。</li><li>自分のiPhoneを選びます。</li><li>iPhone側で受け取り、「ファイル」アプリに保存します。</li><li>出場アラームから保存したCSVを選びます。</li></ol></div><div class="card"><h3>方法3：メールやLINEから保存</h3><ol class="steps"><li>CSVファイルをメールやLINEでiPhoneに送ります。</li><li>添付ファイルを開きます。</li><li>共有ボタンをタップします。</li><li>「ファイルに保存」を選びます。</li><li>保存後、出場アラームからCSVを読み込みます。</li></ol></div></div>
+      <div class="grid" data-lang="en"><div class="card beginner"><h3>Method 1: Use iCloud Drive</h3><ol class="steps"><li>Create the CSV file on Mac or Windows.</li><li>Save the CSV file to iCloud Drive.</li><li>Open the Files app on iPhone.</li><li>Confirm that the CSV file is visible in iCloud Drive.</li><li>In CrewAlarm, tap “Import CSV” and select the file.</li></ol></div><div class="card"><h3>Method 2: Use AirDrop</h3><ol class="steps"><li>Right-click the CSV file on Mac.</li><li>Choose Share → AirDrop.</li><li>Select your iPhone.</li><li>On iPhone, accept the file and save it to the Files app.</li><li>Select the saved CSV file from CrewAlarm.</li></ol></div><div class="card"><h3>Method 3: Save from email or messaging apps</h3><ol class="steps"><li>Send the CSV file to your iPhone by email or messaging app.</li><li>Open the attached file.</li><li>Tap the share button.</li><li>Choose “Save to Files”.</li><li>Import the saved CSV from CrewAlarm.</li></ol></div></div>
+      <div class="tip" style="margin-top:18px;" data-lang="ja">保存場所は「このiPhone内」でも「iCloud Drive」でも大丈夫です。迷った場合は、あとで見つけやすいように「iCloud Drive」内に「出場アラーム」などのフォルダを作って保存するのがおすすめです。</div><div class="tip" style="margin-top:18px;" data-lang="en">You can save the file either “On My iPhone” or in “iCloud Drive”. If unsure, create a folder such as “CrewAlarm” in iCloud Drive so the file is easy to find later.</div>
     </section>
 
-    <section id="alarm"><div class="section-title" data-lang="ja"><span>8</span><h2>アラームを登録する</h2></div><div class="section-title" data-lang="en"><span>8</span><h2>Registering alarms</h2></div><div class="two-col" data-lang="ja"><div class="card"><h3>登録手順</h3><ol class="steps"><li>勤務セットを選択します。</li><li>泊まり＋明けの場合は、泊まり仕業と明け仕業を選択します。</li><li>「この勤務で全アラーム登録」をタップします。</li><li>ホームの次アラームカード、または登録済みアラーム一覧で内容を確認します。</li></ol></div><div class="card beginner"><h3>基準時刻とアラーム時刻</h3><p>基準時刻は勤務表上の元時刻です。アラーム時刻は、設定した「○分前」を引いた実際に鳴る時刻です。</p><pre class="code-block">例：
+    <section id="alarm"><div class="section-title" data-lang="ja"><span>8</span><h2>アラームを登録する</h2></div><div class="section-title" data-lang="en"><span>8</span><h2>Registering alarms</h2></div><div class="two-col" data-lang="ja"><div class="card"><h3>登録手順</h3><ol class="steps"><li>勤務セットを選択します。</li><li>泊まり＋明けの場合は、泊まり仕業と明け仕業を選択します。</li><li>「この勤務で全アラーム登録」をタップします。</li><li>ホームの次アラームカード、登録済みアラーム一覧、確認通知一覧で内容を確認します。</li></ol></div><div class="card beginner"><h3>基準時刻とアラーム時刻</h3><p>基準時刻は勤務表上の元時刻です。アラーム時刻は、設定した「○分前」を引いた実際に鳴る時刻です。</p><pre class="code-block">例：
 基準時刻 07:30
 出場アラーム 5分前
-実際に鳴る時刻 07:25</pre></div></div><div class="two-col" data-lang="en"><div class="card"><h3>Steps</h3><ol class="steps"><li>Select a duty set.</li><li>For stay-and-after duties, select both the stay duty and after duty.</li><li>Tap “Register all alarms for this duty”.</li><li>Check the Next Alarm card or the registered alarm list.</li></ol></div><div class="card beginner"><h3>Base time and alarm time</h3><p>The base time is the original time from the duty roster. The alarm time is the actual time after subtracting the configured offset.</p><pre class="code-block">Example:
+実際に鳴る時刻 07:25</pre></div></div><div class="two-col" data-lang="en"><div class="card"><h3>Steps</h3><ol class="steps"><li>Select a duty set.</li><li>For stay-and-after duties, select both the stay duty and after duty.</li><li>Tap “Register all alarms for this duty”.</li><li>Check the Next Alarm card, registered alarm list, or check notification list.</li></ol></div><div class="card beginner"><h3>Base time and alarm time</h3><p>The base time is the original time from the duty roster. The alarm time is the actual time after subtracting the configured offset.</p><pre class="code-block">Example:
 Base time 07:30
 Report alarm 5 minutes before
 Actual alarm time 07:25</pre></div></div></section>
@@ -544,53 +356,85 @@ Pre-alert: 10 minutes before → notifies at 07:15</pre></div><div class="card">
 {baseTime}   Base time
 {minutes}    Pre-alert minutes</pre></div></div></section>
 
-    <section id="check"><div class="section-title" data-lang="ja"><span>10</span><h2>確認通知の設定</h2></div><div class="section-title" data-lang="en"><span>10</span><h2>Check notification settings</h2></div><div class="card mode-card" data-lang="ja"><div class="mode-row"><strong>アラーム</strong><span>確認通知をAlarmKitのアラームとして登録します。停止後は次アラーム進行の対象になります。</span></div><div class="mode-row"><strong>通知のみ</strong><span>確認通知をアラームとして鳴らさず、iPhoneやApple Watchへの通知でお知らせします。確認通知一覧で確認できます。</span></div><div class="mode-row"><strong>使用しない</strong><span>確認通知のアラームも通知も登録しません。</span></div></div><div class="card mode-card" data-lang="en"><div class="mode-row"><strong>Alarm</strong><span>Registers check notifications as AlarmKit alarms. After stopping, they are included in next-alarm progression.</span></div><div class="mode-row"><strong>Notification only</strong><span>Does not ring as an alarm. Instead, it sends a notification to iPhone or Apple Watch and can be checked in the check notification list.</span></div><div class="mode-row"><strong>Off</strong><span>No alarm or notification is registered for check notification times.</span></div></div></section>
+    <section id="check"><div class="section-title" data-lang="ja"><span>10</span><h2>確認通知の設定</h2></div><div class="section-title" data-lang="en"><span>10</span><h2>Check notification settings</h2></div><div class="card mode-card" data-lang="ja"><div class="mode-row"><strong>アラーム</strong><span>確認通知をAlarmKitのアラームとして登録します。停止後は次アラーム進行の対象になります。</span></div><div class="mode-row"><strong>通知のみ</strong><span>確認通知をアラームとして鳴らさず、iPhoneやApple Watchへの通知でお知らせします。確認通知一覧で確認できます。通知時刻を過ぎた項目は完了済みとして扱われます。</span></div><div class="mode-row"><strong>使用しない</strong><span>確認通知のアラームも通知も登録しません。</span></div></div><div class="card mode-card" data-lang="en"><div class="mode-row"><strong>Alarm</strong><span>Registers check notifications as AlarmKit alarms. After stopping, they are included in next-alarm progression.</span></div><div class="mode-row"><strong>Notification only</strong><span>Does not ring as an alarm. Instead, it sends a notification to iPhone or Apple Watch and can be checked in the check notification list. Items are treated as completed after their notification time passes.</span></div><div class="mode-row"><strong>Off</strong><span>No alarm or notification is registered for check notification times.</span></div></div></section>
 
-    <section id="live"><div class="section-title" data-lang="ja"><span>11</span><h2>Dynamic Island / Live Activity / Apple Watch</h2></div><div class="section-title" data-lang="en"><span>11</span><h2>Dynamic Island / Live Activity / Apple Watch</h2></div><div class="grid" data-lang="ja"><div class="card beginner"><h3>Live Activityとは</h3><p>ロック画面やDynamic Islandに「次のアラーム」を表示する補助機能です。アプリを開かなくても、次に鳴る予定のアラームを確認しやすくなります。</p></div><div class="card"><h3>Apple Watchにも表示</h3><p>対応している環境では、Apple WatchにもLive Activityや次アラーム情報が表示されます。手元で次の予定を確認したい時に便利です。</p></div><div class="card"><h3>表示が消えた時</h3><p>長時間の表示、低電力状態、集中モード、iOSの判断などにより、表示が消えたり更新されないことがあります。設定からLive Activityを一度オフにして、もう一度オンにすると復活する場合があります。</p></div></div><div class="grid" data-lang="en"><div class="card beginner"><h3>What is Live Activity?</h3><p>Live Activity is a supplemental display that shows the next alarm on the Lock Screen or Dynamic Island, making it easier to check without opening the app.</p></div><div class="card"><h3>Also shown on Apple Watch</h3><p>In supported environments, Live Activity or next alarm information may also appear on Apple Watch, making it easier to check upcoming alarms from your wrist.</p></div><div class="card"><h3>If the display disappears</h3><p>Live Activity may disappear or stop updating due to long display time, Low Power Mode, Focus mode, or iOS behavior. Turning Live Activity off and on again in Settings may restore the display.</p></div></div><div class="note" style="margin-top:18px;" data-lang="ja">Live ActivityやDynamic Islandは補助表示です。オンにしていると、端末の状態によってはバッテリー消費が少し早くなる場合があります。大切なのは、Live Activityの表示ではなく、登録済みアラームと通知が正しく登録されていることです。</div><div class="note" style="margin-top:18px;" data-lang="en">Live Activity and Dynamic Island are supplemental displays. Keeping them enabled may slightly increase battery usage depending on device conditions. The most important thing is that alarms and notifications are correctly registered, regardless of the Live Activity display state.</div></section>
+    <section id="widgets">
+      <div class="section-title" data-lang="ja"><span>11</span><h2>ホーム画面・ロック画面ウィジェット</h2></div><div class="section-title" data-lang="en"><span>11</span><h2>Home Screen and Lock Screen widgets</h2></div>
+      <div class="card widget-showcase" data-lang="ja"><div><div class="widget-small-demo"><div class="ring"><div class="ring-inner">あと18分<small>出場</small></div></div></div></div><div><h3>次のアラームをウィジェットで確認</h3><p>v1.1.1（16）では、ホーム画面・ロック画面ウィジェットの表示を改善しました。次のアラームまでの残り時間や進行状況を、アプリを開かずに確認できます。</p><div class="widget-wide-demo"><div class="widget-wide-head"><div><div class="widget-wide-title">🚶 出場</div><small>次のアラーム</small></div><div class="widget-wide-time">あと18分</div></div><div class="progress"><span></span></div></div><div class="tag-row"><span class="tag blue">ホーム画面</span><span class="tag purple">ロック画面</span><span class="tag green">カウントダウン</span></div></div></div>
+      <div class="card widget-showcase" data-lang="en"><div><div class="widget-small-demo"><div class="ring"><div class="ring-inner">18 min<small>Report</small></div></div></div></div><div><h3>Check the next alarm from widgets</h3><p>In v1.1.1 (16), Home Screen and Lock Screen widget displays have been improved. You can check the remaining time and progress without opening the app.</p><div class="widget-wide-demo"><div class="widget-wide-head"><div><div class="widget-wide-title">🚶 Report</div><small>Next alarm</small></div><div class="widget-wide-time">18 min</div></div><div class="progress"><span></span></div></div><div class="tag-row"><span class="tag blue">Home Screen</span><span class="tag purple">Lock Screen</span><span class="tag green">Countdown</span></div></div></div>
+      <div class="two-col" style="margin-top:18px;" data-lang="ja"><div class="card beginner"><h3>ホーム画面ウィジェットの追加方法</h3><ol class="steps"><li>iPhoneのホーム画面で、何もない場所を長押しします。</li><li>左上の「＋」をタップします。</li><li>ウィジェット一覧で「出場アラーム」または「CrewAlarm」を探します。</li><li>小さいウィジェット、または横長ウィジェットを選びます。</li><li>「ウィジェットを追加」をタップします。</li><li>必要に応じて配置場所を調整します。</li></ol></div><div class="card"><h3>ロック画面ウィジェットの追加方法</h3><ol class="steps"><li>ロック画面を長押しします。</li><li>「カスタマイズ」をタップします。</li><li>「ロック画面」を選びます。</li><li>時計の下のウィジェット枠をタップします。</li><li>「出場アラーム」または「CrewAlarm」を選びます。</li><li>円形・横長など、表示したいウィジェットを追加します。</li></ol></div></div>
+      <div class="two-col" style="margin-top:18px;" data-lang="en"><div class="card beginner"><h3>How to add a Home Screen widget</h3><ol class="steps"><li>Touch and hold an empty area on the Home Screen.</li><li>Tap the “+” button.</li><li>Find “CrewAlarm” or “出場アラーム” in the widget list.</li><li>Select the small or medium widget.</li><li>Tap “Add Widget”.</li><li>Move it to the desired position.</li></ol></div><div class="card"><h3>How to add a Lock Screen widget</h3><ol class="steps"><li>Touch and hold the Lock Screen.</li><li>Tap “Customize”.</li><li>Select the Lock Screen.</li><li>Tap the widget area below the clock.</li><li>Select “CrewAlarm” or “出場アラーム”.</li><li>Add a circular or rectangular widget.</li></ol></div></div>
+      <div class="note" style="margin-top:18px;" data-lang="ja">ウィジェットはiOSの仕組みにより、常に秒単位で更新されるとは限りません。残り時間やプログレス表示は補助表示としてご利用ください。正確な登録内容はアプリ内の登録済みアラーム一覧でも確認できます。</div>
+      <div class="note" style="margin-top:18px;" data-lang="en">Due to iOS widget behavior, widgets may not update every second. Countdown and progress displays are supplemental. Please check the registered alarm list in the app for exact registered details.</div>
+    </section>
 
-    <section id="small"><div class="section-title" data-lang="ja"><span>12</span><h2>小さい画面のiPhone向け表示</h2></div><div class="section-title" data-lang="en"><span>12</span><h2>Display on smaller iPhones</h2></div><div class="card" data-lang="ja"><p>小さい画面のiPhoneでは、勤務選択時にスクロール操作とホイールピッカー操作が重なりやすい場合があります。そのため、該当端末ではメニュー方式を標準表示にし、設定画面からホイールピッカー表示に切り替えられるようにしています。</p></div><div class="card" data-lang="en"><p>On smaller iPhones, scrolling and wheel picker gestures can overlap during duty selection. For those devices, the app uses menu-style selection by default, and you can switch back to wheel pickers from Settings.</p></div></section>
+    <section id="live"><div class="section-title" data-lang="ja"><span>12</span><h2>Dynamic Island / Live Activity / Apple Watch</h2></div><div class="section-title" data-lang="en"><span>12</span><h2>Dynamic Island / Live Activity / Apple Watch</h2></div><div class="grid" data-lang="ja"><div class="card beginner"><h3>Live Activityとは</h3><p>ロック画面やDynamic Islandに「次のアラーム」を表示する補助機能です。アプリを開かなくても、次に鳴る予定のアラームを確認しやすくなります。</p></div><div class="card"><h3>Apple Watchにも表示</h3><p>対応している環境では、Apple WatchにもLive Activityや次アラーム情報が表示されます。手元で次の予定を確認したい時に便利です。</p></div><div class="card"><h3>表示が消えた時</h3><p>長時間の表示、低電力状態、集中モード、iOSの判断などにより、表示が消えたり更新されないことがあります。設定からLive Activityを一度オフにして、もう一度オンにすると復活する場合があります。</p></div></div><div class="grid" data-lang="en"><div class="card beginner"><h3>What is Live Activity?</h3><p>Live Activity is a supplemental display that shows the next alarm on the Lock Screen or Dynamic Island, making it easier to check without opening the app.</p></div><div class="card"><h3>Also shown on Apple Watch</h3><p>In supported environments, Live Activity or next alarm information may also appear on Apple Watch, making it easier to check upcoming alarms from your wrist.</p></div><div class="card"><h3>If the display disappears</h3><p>Live Activity may disappear or stop updating due to long display time, Low Power Mode, Focus mode, or iOS behavior. Turning Live Activity off and on again in Settings may restore the display.</p></div></div><div class="note" style="margin-top:18px;" data-lang="ja">Live ActivityやDynamic Islandは補助表示です。オンにしていると、端末の状態によってはバッテリー消費が少し早くなる場合があります。大切なのは、Live Activityの表示ではなく、登録済みアラームと通知が正しく登録されていることです。</div><div class="note" style="margin-top:18px;" data-lang="en">Live Activity and Dynamic Island are supplemental displays. Keeping them enabled may slightly increase battery usage depending on device conditions. The most important thing is that alarms and notifications are correctly registered, regardless of the Live Activity display state.</div></section>
 
-    <section id="faq"><div class="section-title" data-lang="ja"><span>13</span><h2>よくある質問</h2></div><div class="section-title" data-lang="en"><span>13</span><h2>FAQ</h2></div><div class="faq" data-lang="ja"><details><summary>CSVを読み込めません。</summary><p>ヘッダー名が指定フォーマットと一致しているか確認してください。特に「基準アラーム時刻（カンマ区切り）」や「確認通知の時間」の表記に注意してください。Excelの場合は「CSV UTF-8」で保存すると改善することがあります。</p></details><details><summary>NumbersやExcelのファイルをそのまま読み込めますか？</summary><p>Numbers形式やExcel形式のままではなく、CSV形式に書き出してから読み込んでください。</p></details><details><summary>CSVはどこに保存すればいいですか？</summary><p>iPhoneの「ファイル」アプリで見える場所に保存してください。「このiPhone内」または「iCloud Drive」がおすすめです。</p></details><details><summary>確認通知をアラームではなく通知だけにできますか？</summary><p>できます。設定画面の「確認通知」で「通知のみ」を選ぶと、iPhoneやApple Watchに通知だけ届きます。</p></details><details><summary>確認通知カードが出ません。</summary><p>設定画面で確認通知が「通知のみ」になっているか確認してください。「アラーム」や「使用しない」の場合、確認通知カードは表示されません。</p></details><details><summary>Dynamic IslandやLive Activityが消えました。</summary><p>iOSの仕様により表示されなくなる場合があります。設定からLive Activityをオフにして、もう一度オンにすると復活する場合があります。</p></details><details><summary>バッテリー消費が気になります。</summary><p>Live Activityをオンにしていると、通常より少しバッテリー消費が早くなる場合があります。不要な時は設定からオフにしてください。</p></details><details><summary>通知が来ません。</summary><p>iPhoneの設定アプリで通知許可がオンになっているか確認してください。また、アプリ内の事前通知設定がオンになっているか確認してください。</p></details></div><div class="faq" data-lang="en"><details><summary>The CSV cannot be imported.</summary><p>Check that the header names match the required format. Pay special attention to the base alarm times column and check notification time column. If you use Excel, saving as CSV UTF-8 may help.</p></details><details><summary>Can I import Numbers or Excel files directly?</summary><p>Please export the spreadsheet as a CSV file first. Numbers and Excel files cannot be imported directly.</p></details><details><summary>Where should I save the CSV file?</summary><p>Save it somewhere visible in the Files app, such as “On My iPhone” or “iCloud Drive”.</p></details><details><summary>Can check notifications be notifications only?</summary><p>Yes. In Settings, choose “Notification only” for check notifications. They will be delivered as notifications to iPhone or Apple Watch.</p></details><details><summary>The check notification card is not shown.</summary><p>Make sure the check notification mode is set to “Notification only” in Settings. If it is set to “Alarm” or “Off”, the check notification card is not shown.</p></details><details><summary>Dynamic Island or Live Activity disappeared.</summary><p>This can happen due to iOS behavior. Turning Live Activity off and on again in Settings may restore the display.</p></details><details><summary>I am concerned about battery usage.</summary><p>Keeping Live Activity enabled may slightly increase battery usage. Turn it off in Settings when you do not need it.</p></details><details><summary>I do not receive notifications.</summary><p>Check that notification permission is enabled in the iPhone Settings app, and confirm that pre-alert notifications are enabled inside CrewAlarm.</p></details></div></section>
+    <section id="small"><div class="section-title" data-lang="ja"><span>13</span><h2>小さい画面のiPhone向け表示</h2></div><div class="section-title" data-lang="en"><span>13</span><h2>Display on smaller iPhones</h2></div><div class="card" data-lang="ja"><p>小さい画面のiPhoneでは、勤務選択時にスクロール操作とホイールピッカー操作が重なりやすい場合があります。そのため、該当端末ではメニュー方式を標準表示にし、設定画面からホイールピッカー表示に切り替えられるようにしています。</p></div><div class="card" data-lang="en"><p>On smaller iPhones, scrolling and wheel picker gestures can overlap during duty selection. For those devices, the app uses menu-style selection by default, and you can switch back to wheel pickers from Settings.</p></div></section>
 
-    <section id="contact"><div class="section-title" data-lang="ja"><span>14</span><h2>お問い合わせ</h2></div><div class="section-title" data-lang="en"><span>14</span><h2>Contact</h2></div><div class="card"><p data-lang="ja">不具合報告、ご質問、CSVファイルの作成方法についてのお問い合わせは、以下のメールアドレスまでご連絡ください。</p><p data-lang="en">For bug reports, questions, or help with creating CSV files, please contact the following email address.</p><p><strong><a href="mailto:crew.alarm.app2026@gmail.com">crew.alarm.app2026@gmail.com</a></strong></p><p><a href="privacy.html" data-lang="ja">プライバシーポリシーはこちら</a><a href="privacy.html" data-lang="en">Privacy Policy</a></p></div></section>
+    <section id="faq"><div class="section-title" data-lang="ja"><span>14</span><h2>よくある質問</h2></div><div class="section-title" data-lang="en"><span>14</span><h2>FAQ</h2></div><div class="faq" data-lang="ja"><details><summary>CSVを読み込めません。</summary><p>ヘッダー名が指定フォーマットと一致しているか確認してください。特に「基準アラーム時刻（カンマ区切り）」や「確認通知の時間」の表記に注意してください。Excelの場合は「CSV UTF-8」で保存すると改善することがあります。</p></details><details><summary>NumbersやExcelのファイルをそのまま読み込めますか？</summary><p>Numbers形式やExcel形式のままではなく、CSV形式に書き出してから読み込んでください。</p></details><details><summary>CSVはどこに保存すればいいですか？</summary><p>iPhoneの「ファイル」アプリで見える場所に保存してください。「このiPhone内」または「iCloud Drive」がおすすめです。</p></details><details><summary>確認通知をアラームではなく通知だけにできますか？</summary><p>できます。設定画面の「確認通知」で「通知のみ」を選ぶと、iPhoneやApple Watchに通知だけ届きます。通知時刻を過ぎると完了済みとして扱われます。</p></details><details><summary>泊まり＋明けで、明け側だけ確認通知がある場合も表示されますか？</summary><p>はい。v1.1.1（16）では、泊まり＋明け勤務で明け側にのみ確認通知がある場合も、ホームや確認通知一覧で確認しやすくなっています。</p></details><details><summary>ウィジェットの残り時間が少し遅れて見えることがあります。</summary><p>iOSの仕様により、ウィジェットは常にリアルタイム更新されるわけではありません。必要に応じてアプリ本体の登録済みアラーム一覧も確認してください。</p></details><details><summary>Dynamic IslandやLive Activityが消えました。</summary><p>iOSの仕様により表示されなくなる場合があります。設定からLive Activityをオフにして、もう一度オンにすると復活する場合があります。</p></details><details><summary>バッテリー消費が気になります。</summary><p>Live Activityやウィジェット表示を使用していると、端末の状態によっては通常より少しバッテリー消費が早くなる場合があります。</p></details><details><summary>通知が来ません。</summary><p>iPhoneの設定アプリで通知許可がオンになっているか確認してください。また、アプリ内の事前通知設定がオンになっているか確認してください。</p></details></div><div class="faq" data-lang="en"><details><summary>The CSV cannot be imported.</summary><p>Check that the header names match the required format. Pay special attention to the base alarm times column and check notification time column. If you use Excel, saving as CSV UTF-8 may help.</p></details><details><summary>Can I import Numbers or Excel files directly?</summary><p>Please export the spreadsheet as a CSV file first. Numbers and Excel files cannot be imported directly.</p></details><details><summary>Where should I save the CSV file?</summary><p>Save it somewhere visible in the Files app, such as “On My iPhone” or “iCloud Drive”.</p></details><details><summary>Can check notifications be notifications only?</summary><p>Yes. In Settings, choose “Notification only” for check notifications. They will be delivered as notifications to iPhone or Apple Watch and treated as completed after their notification time passes.</p></details><details><summary>Are after-duty-only check notifications shown for stay-and-after duties?</summary><p>Yes. In v1.1.1 (16), after-duty check notifications are handled more clearly for stay-and-after duty patterns.</p></details><details><summary>The widget countdown seems delayed.</summary><p>Due to iOS widget behavior, widgets may not update in real time. Please also check the registered alarm list in the app when needed.</p></details><details><summary>Dynamic Island or Live Activity disappeared.</summary><p>This can happen due to iOS behavior. Turning Live Activity off and on again in Settings may restore the display.</p></details><details><summary>I am concerned about battery usage.</summary><p>Live Activity and widget displays may slightly increase battery usage depending on device conditions.</p></details><details><summary>I do not receive notifications.</summary><p>Check that notification permission is enabled in the iPhone Settings app, and confirm that pre-alert notifications are enabled inside CrewAlarm.</p></details></div></section>
+
+    <section id="contact"><div class="section-title" data-lang="ja"><span>15</span><h2>お問い合わせ</h2></div><div class="section-title" data-lang="en"><span>15</span><h2>Contact</h2></div><div class="card"><p data-lang="ja">不具合報告、ご質問、CSVファイルの作成方法についてのお問い合わせは、以下のメールアドレスまでご連絡ください。</p><p data-lang="en">For bug reports, questions, or help with creating CSV files, please contact the following email address.</p><p><strong><a href="mailto:crew.alarm.app2026@gmail.com">crew.alarm.app2026@gmail.com</a></strong></p><p><a href="privacy.html" data-lang="ja">プライバシーポリシーはこちら</a><a href="privacy.html" data-lang="en">Privacy Policy</a></p></div></section>
   </main>
 
   <footer class="page"><p data-lang="ja">© 2026 Junichiro Tokiyoshi / 出場アラーム</p><p data-lang="en">© 2026 Junichiro Tokiyoshi / CrewAlarm</p></footer>
 
   <script>
-    function setLanguage(lang) {
-      document.documentElement.setAttribute('data-current-lang', lang);
-      document.documentElement.setAttribute('lang', lang);
-      localStorage.setItem('crewAlarmSupportLang', lang);
-      document.getElementById('lang-ja').classList.toggle('active', lang === 'ja');
-      document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-      document.title = lang === 'ja' ? '出場アラーム サポート' : 'CrewAlarm Support';
-    }
+    (function () {
+      'use strict';
 
-    const savedLanguage = localStorage.getItem('crewAlarmSupportLang');
-    const browserLanguage = navigator.language && navigator.language.toLowerCase().startsWith('ja') ? 'ja' : 'en';
-    setLanguage(savedLanguage || browserLanguage || 'ja');
+      function safeStorageGet(key) {
+        try { return window.localStorage ? localStorage.getItem(key) : null; }
+        catch (error) { return null; }
+      }
 
-    const revealTargets = document.querySelectorAll('.card, details, .note, .tip, .sample-table-wrap');
-    revealTargets.forEach((el) => el.classList.add('reveal'));
+      function safeStorageSet(key, value) {
+        try { if (window.localStorage) localStorage.setItem(key, value); }
+        catch (error) {}
+      }
 
-    if ('IntersectionObserver' in window) {
-      const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      function setLanguage(lang) {
+        const normalizedLang = lang === 'en' ? 'en' : 'ja';
+        document.documentElement.setAttribute('data-current-lang', normalizedLang);
+        document.documentElement.setAttribute('lang', normalizedLang);
+        safeStorageSet('crewAlarmSupportLang', normalizedLang);
 
-      revealTargets.forEach((el, index) => {
-        el.style.transitionDelay = `${Math.min(index % 6, 5) * 45}ms`;
-        revealObserver.observe(el);
+        const jaButton = document.getElementById('lang-ja');
+        const enButton = document.getElementById('lang-en');
+        if (jaButton) jaButton.classList.toggle('active', normalizedLang === 'ja');
+        if (enButton) enButton.classList.toggle('active', normalizedLang === 'en');
+        document.title = normalizedLang === 'ja' ? '出場アラーム サポート' : 'CrewAlarm Support';
+      }
+
+      document.querySelectorAll('[data-lang-button]').forEach((button) => {
+        button.addEventListener('click', () => setLanguage(button.getAttribute('data-lang-button')));
       });
-    } else {
-      revealTargets.forEach((el) => el.classList.add('is-visible'));
-    }
+
+      const savedLanguage = safeStorageGet('crewAlarmSupportLang');
+      const browserLanguage = navigator.language && navigator.language.toLowerCase().startsWith('ja') ? 'ja' : 'en';
+      setLanguage(savedLanguage || browserLanguage || 'ja');
+
+      const revealTargets = document.querySelectorAll('.card, details, .note, .tip, .sample-table-wrap');
+      revealTargets.forEach((el) => el.classList.add('reveal'));
+
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        revealTargets.forEach((el, index) => {
+          el.style.transitionDelay = `${Math.min(index % 6, 5) * 45}ms`;
+          revealObserver.observe(el);
+        });
+      } else {
+        revealTargets.forEach((el) => el.classList.add('is-visible'));
+      }
+    })();
   </script>
 </body>
 </html>
